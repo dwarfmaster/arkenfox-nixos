@@ -22,8 +22,15 @@ body {
     background-color: var(--base00);
 }
 
+a {
+    color: var(--base0D);
+}
+a:visited {
+    color: var(--base0E);
+}
+
 div#page {
-    max-width: 82em;
+    max-width: 62em;
     padding: 1em;
     margin-left: auto;
     margin-right: auto;
@@ -31,18 +38,68 @@ div#page {
     color: var(--base07);
 }
 
+summary {
+    cursor: pointer;
+}
+
 div.section {
     background-color: var(--base02);
-    padding: 5px;
+    padding: 0.3em;
     border: none;
-    border-radius: 5px;
+    border-radius: 0.3em;
     margin-bottom: 1em;
 }
 
 div.subsection {
-    background-color: var(--base03);
-    padding: 5px;
+    background-color: var(--base01);
+    color: var(--base06);
+    padding: 0.3em;
     border: none;
-    border-radius: 5px;
+    border-radius: 0.3em;
     margin-bottom: 0.5em;
+}
+
+div.id {
+    font-weight: bold;
+    background-color: var(--base05);
+    color: var(--base00);
+    padding: 0.3em;
+    margin-right: 0.5em;
+    margin-bottom: 0.2em;
+    display: inline-block;
+}
+
+.metas div.id {
+    border-radius: 0.3em;
+}
+
+.links div.id {
+    min-width: 1.3em;
+    text-align: center;
+    border-radius: 0.8em;
+}
+
+.settings table {
+    font-family: monospace;
+    width: 100%;
+    layout: fixed;
+}
+
+.settings tr {
+    background-color: var(--base02);
+}
+.settings tr:nth-child(even) {
+    background-color: var(--base03);
+}
+
+.settings td {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+.settings td:nth-child(1) {
+    text-align: center;
+    width: 5%;
+}
+.settings td:nth-child(3) {
+    width: 15%
 }

@@ -17,37 +17,36 @@ let
 
   # Links
   buildLink = id: link: ''
-    <dt>${id}</dt>
-    <dd><a href="${link}">${link}</a></dd>
+    <div class="id">${id}</div> <a href="${link}">${link}</a><br>
   '';
   buildLinks = links: ''
-    <div class="links"><dl>
+    <div class="links"><p>
       ${mapAttrsToString buildLink links}
-    </dl></div>
+    </p></div>
   '';
 
   # Meta
   buildMeta = name: desc: ''
-    <dt>${name}</dt><dd>${desc}</dd>
+    <div class="id">${name}</div> ${desc}<br>
   '';
   buildMetas = metas: ''
-    <div class="metas"><dl>
+    <div class="metas"><p>
       ${mapAttrsToString buildMeta metas}
-    </dl></div>
+    </p></div>
   '';
 
   # Settings
   buildSetting = setting: ''
-    <dt>
-      <input type="checkbox" disabled ${if setting.enabled then "checked" else ""}>
-      ${setting.name}
-    </dt>
-    <dd>${toHTML setting.value}</dd>
+    <tr>
+      <td><input type="checkbox" disabled ${if setting.enabled then "checked" else ""}></td>
+      <td>${setting.name}</td>
+      <td>${toHTML setting.value}</td>
+    </tr>
   '';
   buildSettings = settings: ''
-    <dl>
+    <table>
       ${concatMapStrings buildSetting settings}
-    </dl>
+    </table>
   '';
 
   # Subsections
@@ -81,6 +80,11 @@ let
     </details></div>
   '';
 
+  upstream =
+    if version == "master"
+    then "https://github.com/arkenfox/user.js"
+    else "https://github.com/arkenfox/user.js/tree/${version}";
+
 in writeTextFile {
   name = "arkenfox-user.js-doc.html";
   text = ''
@@ -90,11 +94,11 @@ in writeTextFile {
   <link rel="stylesheet" href="${./style.css}">
 </head>
 <body><div id="page">
-<h1>Arkenfox user.js for firefox ${if version == "master" then "" else version}</h1>
+<h1>Arkenfox <a href="${upstream}">user.js</a>
+    for Firefox ${if version == "master" then "" else version}</h1>
 
-<a href="${if version == "master"
-           then "https://github.com/arkenfox/user.js"
-           else "https://github.com/arkenfox/user.js/tree/${version}"}">Upstream</a>
+<p>Documentation built by
+<a href="https://github.com/dwarfmaster/arkenfox-nixos">DwarfMaster</a>.</p>
 
 ${mapAttrsToString buildSection extracted}
 </div></body>
