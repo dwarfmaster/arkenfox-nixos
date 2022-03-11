@@ -1,5 +1,107 @@
 {
   "nodes": {
+    "93.0": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1634027026,
+        "narHash": "sha256-/ITf8nv/IWR1sKBchPtdkPjZO5OFH9p6FgVbDfBrJc8=",
+        "owner": "arkenfox",
+        "repo": "user.js",
+        "rev": "85438d00e457bff692303af519da618c6372476b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "arkenfox",
+        "ref": "93.0",
+        "repo": "user.js",
+        "type": "github"
+      }
+    },
+    "94.0": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1637651503,
+        "narHash": "sha256-RvG+GRh8Md1yrTzFniu1G2UpTnOb7KCGDfQmFvdtl58=",
+        "owner": "arkenfox",
+        "repo": "user.js",
+        "rev": "cbfb8abf1544c3e87f412f64a9747bd1dea4a705",
+        "type": "github"
+      },
+      "original": {
+        "owner": "arkenfox",
+        "ref": "94.0",
+        "repo": "user.js",
+        "type": "github"
+      }
+    },
+    "95.0": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1638965627,
+        "narHash": "sha256-4g1Vu4zF+EtHK123zSxIDP1wYROK2rqS897Kcv2C/cI=",
+        "owner": "arkenfox",
+        "repo": "user.js",
+        "rev": "7e1b92567ca2bb76ad358d0fc786fd60b3cf7970",
+        "type": "github"
+      },
+      "original": {
+        "owner": "arkenfox",
+        "ref": "95.0",
+        "repo": "user.js",
+        "type": "github"
+      }
+    },
+    "96.0": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1642736886,
+        "narHash": "sha256-P2C59t4DnM11I9GDL9xyc2m8Ml0T8gRuom7UtWykWnk=",
+        "owner": "arkenfox",
+        "repo": "user.js",
+        "rev": "ac0820a5dc00e04fe14fc2a74ba75e590883293c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "arkenfox",
+        "ref": "96.0",
+        "repo": "user.js",
+        "type": "github"
+      }
+    },
+    "97.0": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1644750900,
+        "narHash": "sha256-Df2D2eBifkZpFklPBbE94AvgAUM/NUAAiuqUzp67Hdo=",
+        "owner": "arkenfox",
+        "repo": "user.js",
+        "rev": "a98b73c64e2e0b505efb6b23d34e6c5d90abe2c8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "arkenfox",
+        "ref": "97.0",
+        "repo": "user.js",
+        "type": "github"
+      }
+    },
+    "98.0": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1646873050,
+        "narHash": "sha256-HJu+azYJRMW0C5hhU96pkwZxql7Ijpiz2sw9e/JoqR8=",
+        "owner": "arkenfox",
+        "repo": "user.js",
+        "rev": "d9af90d05f477e5e25f8d9f545eeb7fe0a235d2a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "arkenfox",
+        "ref": "98.0",
+        "repo": "user.js",
+        "type": "github"
+      }
+    },
     "master": {
       "flake": false,
       "locked": {
@@ -33,116 +135,14 @@
     },
     "root": {
       "inputs": {
+        "93.0": "93.0",
+        "94.0": "94.0",
+        "95.0": "95.0",
+        "96.0": "96.0",
+        "97.0": "97.0",
+        "98.0": "98.0",
         "master": "master",
-        "nixpkgs": "nixpkgs",
-        "v93": "v93",
-        "v94": "v94",
-        "v95": "v95",
-        "v96": "v96",
-        "v97": "v97",
-        "v98": "v98"
-      }
-    },
-    "v93": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1634027026,
-        "narHash": "sha256-/ITf8nv/IWR1sKBchPtdkPjZO5OFH9p6FgVbDfBrJc8=",
-        "owner": "arkenfox",
-        "repo": "user.js",
-        "rev": "85438d00e457bff692303af519da618c6372476b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "arkenfox",
-        "ref": "93.0",
-        "repo": "user.js",
-        "type": "github"
-      }
-    },
-    "v94": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1637651503,
-        "narHash": "sha256-RvG+GRh8Md1yrTzFniu1G2UpTnOb7KCGDfQmFvdtl58=",
-        "owner": "arkenfox",
-        "repo": "user.js",
-        "rev": "cbfb8abf1544c3e87f412f64a9747bd1dea4a705",
-        "type": "github"
-      },
-      "original": {
-        "owner": "arkenfox",
-        "ref": "94.0",
-        "repo": "user.js",
-        "type": "github"
-      }
-    },
-    "v95": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1638965627,
-        "narHash": "sha256-4g1Vu4zF+EtHK123zSxIDP1wYROK2rqS897Kcv2C/cI=",
-        "owner": "arkenfox",
-        "repo": "user.js",
-        "rev": "7e1b92567ca2bb76ad358d0fc786fd60b3cf7970",
-        "type": "github"
-      },
-      "original": {
-        "owner": "arkenfox",
-        "ref": "95.0",
-        "repo": "user.js",
-        "type": "github"
-      }
-    },
-    "v96": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1642736886,
-        "narHash": "sha256-P2C59t4DnM11I9GDL9xyc2m8Ml0T8gRuom7UtWykWnk=",
-        "owner": "arkenfox",
-        "repo": "user.js",
-        "rev": "ac0820a5dc00e04fe14fc2a74ba75e590883293c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "arkenfox",
-        "ref": "96.0",
-        "repo": "user.js",
-        "type": "github"
-      }
-    },
-    "v97": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1644750900,
-        "narHash": "sha256-Df2D2eBifkZpFklPBbE94AvgAUM/NUAAiuqUzp67Hdo=",
-        "owner": "arkenfox",
-        "repo": "user.js",
-        "rev": "a98b73c64e2e0b505efb6b23d34e6c5d90abe2c8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "arkenfox",
-        "ref": "97.0",
-        "repo": "user.js",
-        "type": "github"
-      }
-    },
-    "v98": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1646873050,
-        "narHash": "sha256-HJu+azYJRMW0C5hhU96pkwZxql7Ijpiz2sw9e/JoqR8=",
-        "owner": "arkenfox",
-        "repo": "user.js",
-        "rev": "d9af90d05f477e5e25f8d9f545eeb7fe0a235d2a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "arkenfox",
-        "ref": "98.0",
-        "repo": "user.js",
-        "type": "github"
+        "nixpkgs": "nixpkgs"
       }
     }
   },
