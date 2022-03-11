@@ -2,10 +2,18 @@
 
 let
 
-  inherit (lib) concatStrings mapAttrsToList;
+  inherit (lib) concatMapStrings concatStrings mapAttrsToList;
 
   mapAttrsToString = f: attrs:
     concatStrings (mapAttrsToList f attrs);
+
+  toHTML = value:
+    if builtins.typeOf value == "bool"
+    then (if value then "true" else "false")
+    else
+      if builtins.typeOf value == "string"
+      then "\"${value}\""
+      else toString value;
 
   # Links
   buildLink = id: link: ''
@@ -13,9 +21,9 @@ let
     <dd><a href="${link}">${link}</a></dd>
   '';
   buildLinks = links: ''
-    <dl class="links">
+    <div class="links"><dl>
       ${mapAttrsToString buildLink links}
-    </dl>
+    </dl></div>
   '';
 
   # Meta
@@ -23,13 +31,26 @@ let
     <dt>${name}</dt><dd>${desc}</dd>
   '';
   buildMetas = metas: ''
-    <dl class="metas">
+    <div class="metas"><dl>
       ${mapAttrsToString buildMeta metas}
+    </dl></div>
+  '';
+
+  # Settings
+  buildSetting = setting: ''
+    <dt>
+      <input type="checkbox" disabled ${if setting.enabled then "checked" else ""}>
+      ${setting.name}
+    </dt>
+    <dd>${toHTML setting.value}</dd>
+  '';
+  buildSettings = settings: ''
+    <dl>
+      ${concatMapStrings buildSetting settings}
     </dl>
   '';
 
   # Subsections
-  # TODO settings
   buildSubsection = name: sub: ''
     <div class="subsection"><details>
       <summary>${name}: ${sub.meta.title}</summary>
@@ -39,6 +60,7 @@ let
         ${buildLinks sub.meta.links}
       </div>
       <div class="settings">
+        ${buildSettings sub.settings}
       </div>
     </details></div>
   '';
