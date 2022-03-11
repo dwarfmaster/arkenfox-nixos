@@ -37,19 +37,28 @@
     let
 
       pkgs = import nixpkgs { system = "x86_64-linux"; };
-      inherit (pkgs) lib;
+      inherit (pkgs) lib callPackage;
+      inherit (lib) mapAttrs mapAttrs' nameValuePair;
       js = builtins.removeAttrs inputs [ "self" "nixpkgs" ];
 
-      extractor = pkgs.callPackage ./extractor { };
+      extractor = callPackage ./extractor { };
       extract = import ./extractor/extract.nix { inherit pkgs extractor; };
       versions = builtins.attrNames js;
 
+      docs =
+        mapAttrs'
+          (version: extracted: nameValuePair "arkenfox-v${version}-doc"
+            (callPackage ./doc { inherit extracted version; }))
+          self.lib.arkenfox.extracted;
+
     in {
-      packages.x86_64-linux.arkenfox-extractor = extractor;
+      packages.x86_64-linux = {
+        arkenfox-extractor = extractor;
+      } // docs;
       defaultPackage.x86_64-linux = extractor;
       lib.arkenfox = {
         supportedVersions = versions;
-        extracted = lib.mapAttrs (_: v: import "${extract v}") js;
+        extracted = mapAttrs (_: v: import "${extract v}") js;
       };
     };
 }
