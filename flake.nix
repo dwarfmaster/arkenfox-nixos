@@ -58,10 +58,14 @@
         arkenfox-extractor = extractor;
       } // docs;
       defaultPackage.x86_64-linux = extractor;
+
       lib.arkenfox = {
         supportedVersions = versions;
         extracted = mapAttrs (_: v: import "${extract v}") js;
         types = mapAttrs (_: type) self.lib.arkenfox.extracted;
       };
+
+      hmModules.arkenfox = import ./hm.nix self.lib.arkenfox.extracted;
+      hmModule = self.hmModules.arkenfox;
     };
 }
