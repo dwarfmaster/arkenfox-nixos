@@ -51,6 +51,8 @@
             (callPackage ./doc { inherit extracted version; }))
           self.lib.arkenfox.extracted;
 
+      type = extracted: import ./type.nix { inherit extracted pkgs; lib = pkgs.lib; };
+
     in {
       packages.x86_64-linux = {
         arkenfox-extractor = extractor;
@@ -59,6 +61,7 @@
       lib.arkenfox = {
         supportedVersions = versions;
         extracted = mapAttrs (_: v: import "${extract v}") js;
+        types = mapAttrs (_: type) self.lib.arkenfox.extracted;
       };
     };
 }
