@@ -29,7 +29,7 @@ let
     };
     config = {
       flat = if config.enable
-             then { "${setting.name}" = setting.value; }
+             then { "${setting.name}" = config.value; }
              else { };
     };
   });
