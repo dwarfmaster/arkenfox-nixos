@@ -45,10 +45,10 @@
       extract = import ./extractor/extract.nix { inherit pkgs extractor; };
       versions = builtins.attrNames js;
 
-      docs =
+      docs = pkgs:
         mapAttrs'
           (version: extracted: nameValuePair "arkenfox-v${version}-doc"
-            (callPackage ./doc { inherit extracted version; }))
+            (pkgs.callPackage ./doc { inherit extracted version; }))
           self.lib.arkenfox.extracted;
 
       type = extracted: import ./type.nix { inherit extracted pkgs; lib = pkgs.lib; };
@@ -56,8 +56,15 @@
     in {
       packages.x86_64-linux = {
         arkenfox-extractor = extractor;
-      } // docs;
+      } // (docs pkgs);
       defaultPackage.x86_64-linux = extractor;
+
+      overlays = {
+        arkenfox = final: prev: ({
+          arkenfox-extractor = prev.callPackage ./extractor { };
+        } // (docs prev));
+      };
+      overlay = self.overlays.arkenfox;
 
       lib.arkenfox = {
         supportedVersions = versions;
