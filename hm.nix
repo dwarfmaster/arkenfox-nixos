@@ -33,7 +33,7 @@ in {
     };
   };
 
-  config = lib.mkIf (!(lib.hasPrefix cfg.arkenfoxVersion version)){
+  config = lib.mkIf (cfg.enable && cfg.enableArkenfox && !(lib.hasPrefix cfg.arkenfoxVersion version)){
     warnings = [
       "Arkenfox version ${cfg.arkenfoxVersion} does not match Firefox's (${version})"
     ];
