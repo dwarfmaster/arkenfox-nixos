@@ -46,22 +46,28 @@
       versions = builtins.attrNames js;
 
       docs = pkgs:
-        mapAttrs'
-          (version: extracted: nameValuePair "arkenfox-v${version}-doc"
+        (mapAttrs'
+          (version: extracted: nameValuePair "arkenfox-v${version}-doc-static"
             (pkgs.callPackage ./doc { inherit extracted version; }))
-          self.lib.arkenfox.extracted;
+          self.lib.arkenfox.extracted)
+        // (mapAttrs'
+          (version: extracted: nameValuePair "arkenfox-v${version}-doc"
+            (pkgs.callPackage ./doc { inherit extracted version; css = "/style.css"; }))
+          self.lib.arkenfox.extracted);
 
       type = extracted: import ./type.nix { inherit extracted pkgs; lib = pkgs.lib; };
 
     in {
       packages.x86_64-linux = {
         arkenfox-extractor = extractor;
+        arkenfox-doc-css = pkgs.writeText "style.css" (builtins.readFile ./doc/style.css);
       } // (docs pkgs);
       defaultPackage.x86_64-linux = extractor;
 
       overlays = {
         arkenfox = final: prev: ({
           arkenfox-extractor = prev.callPackage ./extractor { };
+          arkenfox-doc-css = pkgs.writeText "style.css" (builtins.readFile ./doc/style.css);
         } // (docs prev));
       };
       overlay = self.overlays.arkenfox;

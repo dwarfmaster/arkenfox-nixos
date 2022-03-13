@@ -1,4 +1,4 @@
-{ extracted, version, writeTextFile, lib, ... }:
+{ extracted, version, writeTextFile, lib, css ? ./style.css, ... }:
 
 let
 
@@ -91,7 +91,7 @@ in writeTextFile {
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="${./style.css}">
+  <link rel="stylesheet" href="${css}">
 </head>
 <body><div id="page">
 <h1>Arkenfox <a href="${upstream}">user.js</a>
