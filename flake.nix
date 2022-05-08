@@ -7,6 +7,14 @@
       url = "github:arkenfox/user.js";
       flake = false;
     };
+    "100.0" = {
+      url = "github:arkenfox/user.js/v100";
+      flake = false;
+    };
+    "99.0" = {
+      url = "github:arkenfox/user.js/99.0";
+      flake = false;
+    };
     "98.0" = {
       url = "github:arkenfox/user.js/98.0";
       flake = false;

@@ -1,5 +1,22 @@
 {
   "nodes": {
+    "100.0": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1651797486,
+        "narHash": "sha256-v1PP0kkb0EXxTcGDeRe3wWCPGzkZSU4ZXT2hlWENOLU=",
+        "owner": "arkenfox",
+        "repo": "user.js",
+        "rev": "6a3b8a02793a986287a564b0af4b3b58dee7f186",
+        "type": "github"
+      },
+      "original": {
+        "owner": "arkenfox",
+        "ref": "v100",
+        "repo": "user.js",
+        "type": "github"
+      }
+    },
     "93.0": {
       "flake": false,
       "locked": {
@@ -102,14 +119,31 @@
         "type": "github"
       }
     },
+    "99.0": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1649497545,
+        "narHash": "sha256-ScO19N/EVpmMzdN2kkfjYIJN7c0CQdZJ9qMZReqMpI4=",
+        "owner": "arkenfox",
+        "repo": "user.js",
+        "rev": "4ff931781a1bf012e0e7e2ec89dc5c2a9bedd890",
+        "type": "github"
+      },
+      "original": {
+        "owner": "arkenfox",
+        "ref": "99.0",
+        "repo": "user.js",
+        "type": "github"
+      }
+    },
     "master": {
       "flake": false,
       "locked": {
-        "lastModified": 1646873050,
-        "narHash": "sha256-HJu+azYJRMW0C5hhU96pkwZxql7Ijpiz2sw9e/JoqR8=",
+        "lastModified": 1651793624,
+        "narHash": "sha256-4MhqNsw2YLgOjQLAjQb/aRyZf10IkIagzyzzUSiAHtY=",
         "owner": "arkenfox",
         "repo": "user.js",
-        "rev": "d9af90d05f477e5e25f8d9f545eeb7fe0a235d2a",
+        "rev": "7ff46e02dd33588c0298f7432e7742c53765d2ea",
         "type": "github"
       },
       "original": {
@@ -120,11 +154,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1646985262,
-        "narHash": "sha256-lSlP8/lnz1nnJ27CC/AgR0eZX+8ShG+uQ2Y6ZUCFZcE=",
+        "lastModified": 1651981463,
+        "narHash": "sha256-dHft+RzYI9t0oT4F9vBqpSdliDCKs+CA8z7SCcS0zus=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "4d051c3e6dd4a9b653f36731ce00b09c58b6cee1",
+        "rev": "a7cc19161b8628fe5f43056939c8d966646a0b57",
         "type": "github"
       },
       "original": {
@@ -135,12 +169,14 @@
     },
     "root": {
       "inputs": {
+        "100.0": "100.0",
         "93.0": "93.0",
         "94.0": "94.0",
         "95.0": "95.0",
         "96.0": "96.0",
         "97.0": "97.0",
         "98.0": "98.0",
+        "99.0": "99.0",
         "master": "master",
         "nixpkgs": "nixpkgs"
       }
