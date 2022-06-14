@@ -3,16 +3,33 @@
     "100.0": {
       "flake": false,
       "locked": {
-        "lastModified": 1651797486,
-        "narHash": "sha256-v1PP0kkb0EXxTcGDeRe3wWCPGzkZSU4ZXT2hlWENOLU=",
+        "lastModified": 1652122178,
+        "narHash": "sha256-gitVP21/l26hfR+r7+ST2o7pY8ikr2u92n2uzuLgnKs=",
         "owner": "arkenfox",
         "repo": "user.js",
-        "rev": "6a3b8a02793a986287a564b0af4b3b58dee7f186",
+        "rev": "d6b26e75588bcd4311251c68912d3c77b8c6e996",
         "type": "github"
       },
       "original": {
         "owner": "arkenfox",
-        "ref": "v100",
+        "ref": "100.0",
+        "repo": "user.js",
+        "type": "github"
+      }
+    },
+    "101.0": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1655041107,
+        "narHash": "sha256-lGRqHEL9I8VgvSiUjT1DngFCsmEzM8n5J7vIfRj6TZM=",
+        "owner": "arkenfox",
+        "repo": "user.js",
+        "rev": "1a899966a911dc2b69a808095ac7836bef5e214b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "arkenfox",
+        "ref": "101.0",
         "repo": "user.js",
         "type": "github"
       }
@@ -170,6 +187,7 @@
     "root": {
       "inputs": {
         "100.0": "100.0",
+        "101.0": "101.0",
         "93.0": "93.0",
         "94.0": "94.0",
         "95.0": "95.0",
