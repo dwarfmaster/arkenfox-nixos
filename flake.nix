@@ -2,9 +2,13 @@
   description = "Utilities to use arkenfox's user.js for Firefox";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/release-21.11";
+    nixpkgs.url = "nixpkgs/release-22.05";
     master = {
       url = "github:arkenfox/user.js";
+      flake = false;
+    };
+    "102.0" = {
+      url = "github:arkenfox/user.js/102.0";
       flake = false;
     };
     "101.0" = {

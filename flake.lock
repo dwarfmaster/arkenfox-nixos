@@ -34,6 +34,23 @@
         "type": "github"
       }
     },
+    "102.0": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1656722605,
+        "narHash": "sha256-1M1lf3ah4I5KOPlTIZ52uEha8tuQu1wkgkdzEB4iK/0=",
+        "owner": "arkenfox",
+        "repo": "user.js",
+        "rev": "ceacc9dd74086478d43ccf3a4f0bd5befda53a43",
+        "type": "github"
+      },
+      "original": {
+        "owner": "arkenfox",
+        "ref": "102.0",
+        "repo": "user.js",
+        "type": "github"
+      }
+    },
     "93.0": {
       "flake": false,
       "locked": {
@@ -171,16 +188,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1651981463,
-        "narHash": "sha256-dHft+RzYI9t0oT4F9vBqpSdliDCKs+CA8z7SCcS0zus=",
+        "lastModified": 1657218696,
+        "narHash": "sha256-lBVX6AnK9ShdPZhsEZ9QhW6kM4OFR31Nc5Af/DiTn5Q=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "a7cc19161b8628fe5f43056939c8d966646a0b57",
+        "rev": "522afca14a3b23b321eee303f9e66a941485a372",
         "type": "github"
       },
       "original": {
         "id": "nixpkgs",
-        "ref": "release-21.11",
+        "ref": "release-22.05",
         "type": "indirect"
       }
     },
@@ -188,6 +205,7 @@
       "inputs": {
         "100.0": "100.0",
         "101.0": "101.0",
+        "102.0": "102.0",
         "93.0": "93.0",
         "94.0": "94.0",
         "95.0": "95.0",
