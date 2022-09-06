@@ -26,7 +26,8 @@ This flake exports a few things :
 - the script used for the extraction as `packages.<system>.arkenfox-extractor`.
 - the home-manager module as `hmModules.arkenfox`.
 - a rendered documentation of each supported `user.js` version as
-  `packages.<system>.arkenfox-v<version>-doc-static`.
+  `packages.<system>.arkenfox-v<version>-doc-static`. Here version can be either
+  a numeric one like `103_0` or `master`.
 
 ## Home-manager module
 
@@ -95,5 +96,10 @@ Targets `programs.<system>.arkenfox-v<version>-doc-static` will build this
 can be found [there](https://arkenfox.dwarfmaster.net). Each settings is
 presented as a table with a checkbox indicating if it is enabled by default, its
 name, and its default value.
+
+You can build the documentation without copying the flake using (for example):
+```shell
+nix build "github:dwarfmaster/arkenfox-nixos#arkenfox-v103_0-doc-static"
+```
 
 

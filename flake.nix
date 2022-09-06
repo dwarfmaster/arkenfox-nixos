@@ -65,13 +65,14 @@
       extract = import ./extractor/extract.nix { inherit pkgs extractor; };
       versions = builtins.attrNames js;
 
+      ppVer = builtins.replaceStrings ["."] ["_"];
       docs = pkgs:
         (mapAttrs'
-          (version: extracted: nameValuePair "arkenfox-v${version}-doc-static"
+          (version: extracted: nameValuePair "arkenfox-v${ppVer version}-doc-static"
             (pkgs.callPackage ./doc { inherit extracted version; }))
           self.lib.arkenfox.extracted)
         // (mapAttrs'
-          (version: extracted: nameValuePair "arkenfox-v${version}-doc"
+          (version: extracted: nameValuePair "arkenfox-v${ppVer version}-doc"
             (pkgs.callPackage ./doc { inherit extracted version; css = "/style.css"; }))
           self.lib.arkenfox.extracted);
 
