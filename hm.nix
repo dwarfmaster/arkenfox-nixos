@@ -1,5 +1,5 @@
 
-extracted:
+versions: extracted:
 
 { config, lib, pkgs, ... }:
 
@@ -9,15 +9,17 @@ let
 
   cfg = config.programs.firefox;
   version = "${config.programs.firefox.package.version}";
-  ext = extracted."${cfg.arkenfoxVersion}";
+  ext = extracted."${cfg.arkenfox.version}";
 
 in {
   options.programs.firefox = {
-    enableArkenfox = lib.mkEnableOption "arkenfox support in profiles";
-    arkenfoxVersion = lib.mkOption {
-      description = "The version of arkenfox user.js used";
-      type = types.str;
-      default = "master";
+    arkenfox = {
+      enable = lib.mkEnableOption "arkenfox support in profiles";
+      version = lib.mkOption {
+        description = "The version of arkenfox user.js used";
+        type = types.enum versions;
+        default = "master";
+      };
     };
     profiles = lib.mkOption {
       type = types.attrsOf (types.submodule ({config, ...}: {
@@ -26,16 +28,16 @@ in {
           type = import ./type.nix { extracted = ext; inherit pkgs lib; };
           default = { };
         };
-        config = lib.mkIf cfg.enableArkenfox {
+        config = lib.mkIf cfg.arkenfox.enable {
           settings = config.arkenfox.flatSettings;
         };
       }));
     };
   };
 
-  config = lib.mkIf (cfg.enable && cfg.enableArkenfox && !(lib.hasPrefix cfg.arkenfoxVersion version)){
+  config = lib.mkIf (cfg.enable && cfg.arkenfox.enable && !(lib.hasPrefix cfg.arkenfox.version version)){
     warnings = [
-      "Arkenfox version ${cfg.arkenfoxVersion} does not match Firefox's (${version})"
+      "Arkenfox version ${cfg.arkenfox.version} does not match Firefox's (${version})"
     ];
   };
 }

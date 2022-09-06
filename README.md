@@ -30,8 +30,8 @@ This flake exports a few things :
 
 ## Home-manager module
 
-To enable the module, you need to set both `programs.firefox.enableArkenfox` to
-true and `programs.firefox.arkenfoxVersion` to the version you want to use.
+To enable the module, you need to set both `programs.firefox.arkenfox.enable` to
+true and `programs.firefox.arkenfox.version` to the version you want to use.
 Ideally the version used is the same as Firefox's, but may differ if arkenfox
 hasn't yet been updated, or you want to keep your previous settings with the new
 Firefox version. In the case the versions do not match, a warning will be
@@ -61,8 +61,10 @@ want to enable the search region setting that is commented in the default
 {
   programs.firefox = {
     enable = true;
-    enableArkenfox = true;
-    arkenfoxVersion = "103.0";
+    arkenfox = {
+      enable = true;
+      version = "103.0";
+    };
     
     profiles.Default.arkenfox = {
       enable = true;

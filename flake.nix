@@ -99,7 +99,7 @@
       };
 
       hmModules = {
-        arkenfox = import ./hm.nix self.lib.arkenfox.extracted;
+        arkenfox = import ./hm.nix self.lib.arkenfox.supportedVersions self.lib.arkenfox.extracted;
         default = self.hmModules.arkenfox;
       };
     };
