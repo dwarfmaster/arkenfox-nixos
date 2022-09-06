@@ -81,8 +81,8 @@
       packages.x86_64-linux = {
         arkenfox-extractor = extractor;
         arkenfox-doc-css = pkgs.writeText "style.css" (builtins.readFile ./doc/style.css);
+        default = extractor;
       } // (docs pkgs);
-      defaultPackage.x86_64-linux = extractor;
 
       overlays = {
         arkenfox = final: prev: ({
@@ -98,7 +98,9 @@
         types = mapAttrs (_: type) self.lib.arkenfox.extracted;
       };
 
-      hmModules.arkenfox = import ./hm.nix self.lib.arkenfox.extracted;
-      hmModule = self.hmModules.arkenfox;
+      hmModules = {
+        arkenfox = import ./hm.nix self.lib.arkenfox.extracted;
+        default = self.hmModules.arkenfox;
+      };
     };
 }
