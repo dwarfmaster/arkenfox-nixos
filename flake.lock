@@ -190,11 +190,11 @@
     "master": {
       "flake": false,
       "locked": {
-        "lastModified": 1661276035,
-        "narHash": "sha256-9jZuUOeIfDQF7YwFOxSREZGWaIR9qpyTtr+cEnMk3EI=",
+        "lastModified": 1662893183,
+        "narHash": "sha256-NyP/kJlV1Ai7os3gMqukKMdRSQ78GAjPCJkZDZtDdeo=",
         "owner": "arkenfox",
         "repo": "user.js",
-        "rev": "06bfef8fd155fdf62e409c30cd1d68572f0c8b41",
+        "rev": "3f09afdee07c5aea33f6dc4194e1425d6400a0d7",
         "type": "github"
       },
       "original": {
@@ -205,11 +205,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1662850273,
-        "narHash": "sha256-5BvDtCxapSNVl726PcBSBPjhBHG1TZwDZaDwqxwzyYw=",
+        "lastModified": 1664063819,
+        "narHash": "sha256-5wXa+9uboo7UizMDeUTMoANv3pm0g9ze1NdTleY3rCE=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "15f892f3b7aa47529f49246d31eeb47471ecfca1",
+        "rev": "aee4db5b9eaccd3fb7f16c742685fef9dc355077",
         "type": "github"
       },
       "original": {
