@@ -7,6 +7,10 @@
       url = "github:arkenfox/user.js";
       flake = false;
     };
+    "104.0" = {
+      url = "github:arkenfox/user.js/104.0";
+      flake = false;
+    };
     "103.0" = {
       url = "github:arkenfox/user.js/103.0";
       flake = false;
