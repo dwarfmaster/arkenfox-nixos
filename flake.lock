@@ -85,6 +85,23 @@
         "type": "github"
       }
     },
+    "105.0": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1664333206,
+        "narHash": "sha256-7fa6pf405Qtz+la9FQqRTW/UCAXuW+XsiHx9clAKlDA=",
+        "owner": "arkenfox",
+        "repo": "user.js",
+        "rev": "5c5eeccd95ac730ef5ac014f3aebda540c8ea8ae",
+        "type": "github"
+      },
+      "original": {
+        "owner": "arkenfox",
+        "ref": "refs/pull/1541/head",
+        "repo": "user.js",
+        "type": "github"
+      }
+    },
     "93.0": {
       "flake": false,
       "locked": {
@@ -242,6 +259,7 @@
         "102.0": "102.0",
         "103.0": "103.0",
         "104.0": "104.0",
+        "105.0": "105.0",
         "93.0": "93.0",
         "94.0": "94.0",
         "95.0": "95.0",
