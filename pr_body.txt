@@ -1,4 +1,4 @@
 Automated changes by the [update-flake-lock](https://github.com/DeterminateSystems/update-flake-lock) GitHub Action.
 ```
-Flake lock file updates:%0A%0A• Updated input 'master':%0A    'github:arkenfox/user.js/06bfef8fd155fdf62e409c30cd1d68572f0c8b41' (2022-08-23)%0A  → 'github:arkenfox/user.js/3f09afdee07c5aea33f6dc4194e1425d6400a0d7' (2022-09-11)%0A• Updated input 'nixpkgs':%0A    'github:NixOS/nixpkgs/15f892f3b7aa47529f49246d31eeb47471ecfca1' (2022-09-10)%0A  → 'github:NixOS/nixpkgs/aee4db5b9eaccd3fb7f16c742685fef9dc355077' (2022-09-24)
+Flake lock file updates:%0A%0A• Updated input '105.0':%0A    'github:arkenfox/user.js/5c5eeccd95ac730ef5ac014f3aebda540c8ea8ae' (2022-09-28)%0A  → 'github:arkenfox/user.js/24860efe2c35b2f5750ad422d2021884263b5177' (2022-10-01)%0A• Updated input 'master':%0A    'github:arkenfox/user.js/3f09afdee07c5aea33f6dc4194e1425d6400a0d7' (2022-09-11)%0A  → 'github:arkenfox/user.js/4bc98005ec0ae56726a38d0854c645b407194278' (2022-10-01)%0A• Updated input 'nixpkgs':%0A    'github:NixOS/nixpkgs/aee4db5b9eaccd3fb7f16c742685fef9dc355077' (2022-09-24)%0A  → 'github:NixOS/nixpkgs/07ee4f771ea9d418e71c639a3bd2848058cdc6f2' (2022-10-01)
 ```
