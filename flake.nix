@@ -7,14 +7,16 @@
       url = "github:arkenfox/user.js";
       flake = false;
     };
-    # TODO replace as soon as the PR is merged 
-    "105.0" = {
+  # TODO replace as soon as the PR is merged 
+    "107.0" = {
       type = "github";
       owner = "arkenfox";
       repo = "user.js";
-      ref = "refs/pull/1541/head";
+      ref = "refs/pull/1579/head";
       flake = false;
     };
+    "106.0" = { url = "github:arkenfox/user.js/106.0"; flake = false; };
+    "105.0" = { url = "github:arkenfox/user.js/105.0"; flake = false; };
     "104.0" = { url = "github:arkenfox/user.js/104.0"; flake = false; };
     "103.0" = { url = "github:arkenfox/user.js/103.0"; flake = false; };
     "102.0" = { url = "github:arkenfox/user.js/102.0"; flake = false; };
