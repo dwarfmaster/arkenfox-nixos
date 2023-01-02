@@ -1,4 +1,4 @@
 Automated changes by the [update-flake-lock](https://github.com/DeterminateSystems/update-flake-lock) GitHub Action.
 ```
-Flake lock file updates:%0A%0A• Updated input 'master':%0A    'github:arkenfox/user.js/5a366493e029d04103b7f2c25c4eee6dc9b40176' (2022-11-19)%0A  → 'github:arkenfox/user.js/7135907b2fe13fa55eb8ebf162603037f83e353c' (2022-12-10)%0A• Updated input 'nixpkgs':%0A    'github:NixOS/nixpkgs/b68a6a27adb452879ab66c0eaac0c133e32823b2' (2022-11-20)%0A  → 'github:NixOS/nixpkgs/7b9eeb856cbf976482fa8d1cb295ea03fb3e1277' (2022-12-10)
+Flake lock file updates:%0A%0A• Updated input 'nixpkgs':%0A    'github:NixOS/nixpkgs/7b9eeb856cbf976482fa8d1cb295ea03fb3e1277' (2022-12-10)%0A  → 'github:NixOS/nixpkgs/5353b10bd9a05533a94cf2e5629cf18b0af089dc' (2022-12-31)
 ```
