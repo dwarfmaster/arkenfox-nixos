@@ -258,11 +258,11 @@
     "master": {
       "flake": false,
       "locked": {
-        "lastModified": 1672679724,
-        "narHash": "sha256-7BSC3EZ4DHA+xpztIQd6Jm6GjEm5obSoBhrUZR8WlIw=",
+        "lastModified": 1673196505,
+        "narHash": "sha256-YsQbH6bqp2I52meYf0X0DQpwLlDdu5pK9XHMT/9RqOg=",
         "owner": "arkenfox",
         "repo": "user.js",
-        "rev": "f5e54b4a709ca3d58e12e7524e71d3cd7f994515",
+        "rev": "62a68f08147123b0c2c288ffdecc3f03e4ab1ae8",
         "type": "github"
       },
       "original": {
