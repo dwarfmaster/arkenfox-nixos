@@ -1,4 +1,4 @@
 Automated changes by the [update-flake-lock](https://github.com/DeterminateSystems/update-flake-lock) GitHub Action.
 ```
-Flake lock file updates:%0A%0A• Updated input 'master':%0A    'github:arkenfox/user.js/f5e54b4a709ca3d58e12e7524e71d3cd7f994515' (2023-01-02)%0A  → 'github:arkenfox/user.js/62a68f08147123b0c2c288ffdecc3f03e4ab1ae8' (2023-01-08)
+* flake.lock: Update%0D%0A%0D%0AFlake lock file updates:%0D%0A%0D%0A• Updated input 'master':%0D%0A    'github:arkenfox/user.js/f5e54b4a709ca3d58e12e7524e71d3cd7f994515' (2023-01-02)%0D%0A  → 'github:arkenfox/user.js/62a68f08147123b0c2c288ffdecc3f03e4ab1ae8' (2023-01-08)%0D%0A%0D%0A* [create-pull-request] automated change%0D%0A%0D%0ACo-authored-by: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
 ```
