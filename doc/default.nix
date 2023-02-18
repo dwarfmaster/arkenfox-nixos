@@ -1,7 +1,11 @@
-{ extracted, version, writeTextFile, lib, css ? ./style.css, ... }:
-
-let
-
+{
+  extracted,
+  version,
+  writeTextFile,
+  lib,
+  css ? ./style.css,
+  ...
+}: let
   inherit (lib) concatMapStrings concatStrings mapAttrsToList;
 
   mapAttrsToString = f: attrs:
@@ -9,11 +13,15 @@ let
 
   toHTML = value:
     if builtins.typeOf value == "bool"
-    then (if value then "true" else "false")
-    else
-      if builtins.typeOf value == "string"
-      then "\"${value}\""
-      else toString value;
+    then
+      (
+        if value
+        then "true"
+        else "false"
+      )
+    else if builtins.typeOf value == "string"
+    then "\"${value}\""
+    else toString value;
 
   # Links
   buildLink = id: link: ''
@@ -38,7 +46,11 @@ let
   # Settings
   buildSetting = setting: ''
     <tr>
-      <td><input type="checkbox" disabled ${if setting.enabled then "checked" else ""}></td>
+      <td><input type="checkbox" disabled ${
+      if setting.enabled
+      then "checked"
+      else ""
+    }></td>
       <td>${setting.name}</td>
       <td>${toHTML setting.value}</td>
     </tr>
@@ -71,12 +83,12 @@ let
       <div class="description">
         <p>${section.meta.description}</p>
         ${buildMetas
-          (builtins.removeAttrs section.meta
-            ["title" "description" "links" "parrots"])}
+      (builtins.removeAttrs section.meta
+        ["title" "description" "links" "parrots"])}
         ${buildLinks section.meta.links}
       </div>
       ${mapAttrsToString buildSubsection
-        (builtins.removeAttrs section ["meta"])}
+      (builtins.removeAttrs section ["meta"])}
     </details></div>
   '';
 
@@ -84,24 +96,28 @@ let
     if version == "master"
     then "https://github.com/arkenfox/user.js"
     else "https://github.com/arkenfox/user.js/tree/${version}";
+in
+  writeTextFile {
+    name = "arkenfox-user.js-doc.html";
+    text = ''
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <link rel="stylesheet" href="${css}">
+      </head>
+      <body><div id="page">
+      <h1>Arkenfox <a href="${upstream}">user.js</a>
+          for Firefox ${
+        if version == "master"
+        then ""
+        else version
+      }</h1>
 
-in writeTextFile {
-  name = "arkenfox-user.js-doc.html";
-  text = ''
-<!DOCTYPE html>
-<html>
-<head>
-  <link rel="stylesheet" href="${css}">
-</head>
-<body><div id="page">
-<h1>Arkenfox <a href="${upstream}">user.js</a>
-    for Firefox ${if version == "master" then "" else version}</h1>
+      <p>Documentation built by
+      <a href="https://github.com/dwarfmaster/arkenfox-nixos">DwarfMaster</a>.</p>
 
-<p>Documentation built by
-<a href="https://github.com/dwarfmaster/arkenfox-nixos">DwarfMaster</a>.</p>
-
-${mapAttrsToString buildSection extracted}
-</div></body>
-</html>
-'';
-}
+      ${mapAttrsToString buildSection extracted}
+      </div></body>
+      </html>
+    '';
+  }

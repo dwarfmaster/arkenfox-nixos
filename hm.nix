@@ -1,16 +1,14 @@
-
-versions: extracted:
-
-{ config, lib, pkgs, ... }:
-
-let
-
+versions: extracted: {
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   inherit (lib) types;
 
   cfg = config.programs.firefox;
   version = "${config.programs.firefox.package.version}";
   ext = extracted."${cfg.arkenfox.version}";
-
 in {
   options.programs.firefox = {
     arkenfox = {
@@ -25,8 +23,11 @@ in {
       type = types.attrsOf (types.submodule ({config, ...}: {
         options.arkenfox = lib.mkOption {
           description = "Setup arkenfox user.js in profile";
-          type = import ./type.nix { extracted = ext; inherit pkgs lib; };
-          default = { };
+          type = import ./type.nix {
+            extracted = ext;
+            inherit pkgs lib;
+          };
+          default = {};
         };
         config = lib.mkIf cfg.arkenfox.enable {
           settings = config.arkenfox.flatSettings;
@@ -35,7 +36,7 @@ in {
     };
   };
 
-  config = lib.mkIf (cfg.enable && cfg.arkenfox.enable && !(lib.hasPrefix cfg.arkenfox.version version)){
+  config = lib.mkIf (cfg.enable && cfg.arkenfox.enable && !(lib.hasPrefix cfg.arkenfox.version version)) {
     warnings = [
       "Arkenfox version ${cfg.arkenfox.version} does not match Firefox's (${version})"
     ];

@@ -1,5 +1,8 @@
-{ writeScriptBin , perl, ... }:
-
+{
+  writeScriptBin,
+  perl,
+  ...
+}:
 writeScriptBin "arkenfox-extractor" ''
   #!${perl}/bin/perl
 
