@@ -122,16 +122,50 @@
     "107.0": {
       "flake": false,
       "locked": {
-        "lastModified": 1668912908,
-        "narHash": "sha256-LeSJvxkTU4491rmkznbIm3l/ZiC+876OsLfej2Aj4Ro=",
+        "lastModified": 1668990997,
+        "narHash": "sha256-TZKoArzALuCNWNBq3un091eR3uRLAi59z/AZ64Xg3BQ=",
         "owner": "arkenfox",
         "repo": "user.js",
-        "rev": "e8ea7f3f23b9a7f257b61ad7553b4b64b3965ddc",
+        "rev": "cc0f05388f6c721c358e89372caac604f84fd0d9",
         "type": "github"
       },
       "original": {
         "owner": "arkenfox",
-        "ref": "refs/pull/1579/head",
+        "ref": "107.0",
+        "repo": "user.js",
+        "type": "github"
+      }
+    },
+    "108.0": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1673196505,
+        "narHash": "sha256-YsQbH6bqp2I52meYf0X0DQpwLlDdu5pK9XHMT/9RqOg=",
+        "owner": "arkenfox",
+        "repo": "user.js",
+        "rev": "62a68f08147123b0c2c288ffdecc3f03e4ab1ae8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "arkenfox",
+        "ref": "108.0",
+        "repo": "user.js",
+        "type": "github"
+      }
+    },
+    "109.0": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1675728165,
+        "narHash": "sha256-ebSx6DaXoGKcCoK6UcDnWvdAW6J2X6pJRPD1Pw7UNOw=",
+        "owner": "arkenfox",
+        "repo": "user.js",
+        "rev": "73884850632ffe284f76881786f7d5903b917f58",
+        "type": "github"
+      },
+      "original": {
+        "owner": "arkenfox",
+        "ref": "109.0",
         "repo": "user.js",
         "type": "github"
       }
@@ -296,6 +330,8 @@
         "105.0": "105.0",
         "106.0": "106.0",
         "107.0": "107.0",
+        "108.0": "108.0",
+        "109.0": "109.0",
         "93.0": "93.0",
         "94.0": "94.0",
         "95.0": "95.0",
