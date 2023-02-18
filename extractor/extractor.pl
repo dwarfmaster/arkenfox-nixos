@@ -12,6 +12,7 @@ my $in_section_description = $false;
 my @section_parrots = ();
 my %section_meta = ();
 my %section_links = ();
+my %viewed_sections = ();
 
 # See entry 0701 for testing and implementing the subsection metadata
 my $subsection_number = "0000";
@@ -20,11 +21,36 @@ my $in_subsection = $false;
 my $subsection_description = "";
 my %subsection_meta = ();
 my %subsection_links = ();
+my %viewed_subsections = ();
 
 sub nix_sanitize {
     my $str = $_[0];
     $str =~ s/"/\\"/g;
     return $str;
+}
+
+sub select_new {
+  my ($stub, %hash) = @_;
+  return $stub if not exists $hash{$stub};
+  my $i = 1;
+  for(;;) {
+    my $attempt = "$stub-$i";
+    return $attempt if not exists $hash{$attempt};
+  }
+}
+
+sub select_new_section {
+  my ($section) = @_;
+  my $selected = select_new($section, %viewed_sections);
+  $viewed_sections{$selected} = ();
+  return $selected;
+}
+
+sub select_new_subsection {
+  my ($sub) = @_;
+  my $selected = select_new($sub, %viewed_subsections);
+  $viewed_subsections{$selected} = ();
+  return $selected;
 }
 
 sub close_section {
@@ -120,8 +146,8 @@ while(my $line = <>) {
     }
     # Subsection
     elsif($line =~ /^\/\* (\d\d\d\d): (.*?)( \*\*\*\/)?$/) {
-        $in_subsection and close_subsection();
-        $subsection_number = $1;
+        close_subsection() if $in_subsection;
+        $subsection_number = select_new_subsection $1;
         $subsection_title  = $2;
         $in_subsection = $true;
         print "    \"$subsection_number\" = {\n      settings = [\n";
@@ -130,12 +156,12 @@ while(my $line = <>) {
     elsif($line =~ /^\/\*\*\* \[SECTION (\d\d\d\d)\]: (.*?)( \*\*\*\/)?$/) {
         my $temp_section_title = $2;
         my $temp_section_number = $1;
-        if($temp_section_number eq "9999") { last; }
+        last if $temp_section_number eq "9999";
         $in_subsection = $false;
         close_subsection();
         close_section();
         $section_title = $temp_section_title;
-        $section_number = $temp_section_number;
+        $section_number = select_new_section $temp_section_number;
         $in_section_description = $line !~ /\*\*\*\/$/;
         print "  \"$section_number\" = {\n";
         if($section_number eq "9000") {
