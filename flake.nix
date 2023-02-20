@@ -3,6 +3,10 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/release-22.05";
+    flake-compat = {
+      url = "github:edolstra/flake-compat";
+      flake = false;
+    };
     master = {
       url = "github:arkenfox/user.js";
       flake = false;
@@ -32,7 +36,7 @@
       pkgs = import nixpkgs { system = "x86_64-linux"; };
       inherit (pkgs) lib callPackage;
       inherit (lib) mapAttrs mapAttrs' nameValuePair;
-      js = builtins.removeAttrs inputs [ "self" "nixpkgs" ];
+      js = builtins.removeAttrs inputs [ "self" "flake-compat" "nixpkgs" ];
 
       extractor = callPackage ./extractor { };
       extract = import ./extractor/extract.nix { inherit pkgs extractor; };

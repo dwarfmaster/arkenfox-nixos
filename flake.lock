@@ -289,6 +289,22 @@
         "type": "github"
       }
     },
+    "flake-compat": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1673956053,
+        "narHash": "sha256-4gtG9iQuiKITOjNQQeQIpoIB6b16fm+504Ch3sNKLd8=",
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "rev": "35bb57c0c8d8b62bbfd284272c928ceb64ddbde9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "type": "github"
+      }
+    },
     "master": {
       "flake": false,
       "locked": {
@@ -339,6 +355,7 @@
         "97.0": "97.0",
         "98.0": "98.0",
         "99.0": "99.0",
+        "flake-compat": "flake-compat",
         "master": "master",
         "nixpkgs": "nixpkgs"
       }
