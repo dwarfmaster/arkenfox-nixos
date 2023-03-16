@@ -7,6 +7,7 @@
       url = "github:edolstra/flake-compat";
       flake = false;
     };
+    flake-utils.url = "github:numtide/flake-utils";
     master = {
       url = "github:arkenfox/user.js";
       flake = false;
@@ -21,64 +22,67 @@
     "102.0" = { url = "github:arkenfox/user.js/102.0"; flake = false; };
     "101.0" = { url = "github:arkenfox/user.js/101.0"; flake = false; };
     "100.0" = { url = "github:arkenfox/user.js/100.0"; flake = false; };
-    "99.0"  = { url = "github:arkenfox/user.js/99.0";  flake = false; };
-    "98.0"  = { url = "github:arkenfox/user.js/98.0";  flake = false; };
-    "97.0"  = { url = "github:arkenfox/user.js/97.0";  flake = false; };
-    "96.0"  = { url = "github:arkenfox/user.js/96.0";  flake = false; };
-    "95.0"  = { url = "github:arkenfox/user.js/95.0";  flake = false; };
-    "94.0"  = { url = "github:arkenfox/user.js/94.0";  flake = false; };
-    "93.0"  = { url = "github:arkenfox/user.js/93.0";  flake = false; };
+    "99.0" = { url = "github:arkenfox/user.js/99.0"; flake = false; };
+    "98.0" = { url = "github:arkenfox/user.js/98.0"; flake = false; };
+    "97.0" = { url = "github:arkenfox/user.js/97.0"; flake = false; };
+    "96.0" = { url = "github:arkenfox/user.js/96.0"; flake = false; };
+    "95.0" = { url = "github:arkenfox/user.js/95.0"; flake = false; };
+    "94.0" = { url = "github:arkenfox/user.js/94.0"; flake = false; };
+    "93.0" = { url = "github:arkenfox/user.js/93.0"; flake = false; };
   };
 
-  outputs = inputs@{ self, nixpkgs, ... }:
-    let
+  outputs = inputs@{ self, nixpkgs, flake-utils, ... }:
+    flake-utils.lib.eachDefaultSystem ++ [ "powerpc64le-linux" ] (system:
+      let
 
-      pkgs = import nixpkgs { system = "x86_64-linux"; };
-      inherit (pkgs) lib callPackage;
-      inherit (lib) mapAttrs mapAttrs' nameValuePair;
-      js = builtins.removeAttrs inputs [ "self" "flake-compat" "nixpkgs" ];
+        pkgs = nixpkgs.legacyPackages.${system};
+        inherit (pkgs) lib callPackage;
+        inherit (lib) mapAttrs mapAttrs' nameValuePair;
+        js = builtins.removeAttrs inputs [ "self" "flake-compat" "nixpkgs" ];
 
-      extractor = callPackage ./extractor { };
-      extract = import ./extractor/extract.nix { inherit pkgs extractor; };
-      versions = builtins.attrNames js;
+        extractor = callPackage ./extractor { };
+        extract = import ./extractor/extract.nix { inherit pkgs extractor; };
+        versions = builtins.attrNames js;
 
-      ppVer = builtins.replaceStrings ["."] ["_"];
-      docs = pkgs:
-        (mapAttrs'
-          (version: extracted: nameValuePair "arkenfox-v${ppVer version}-doc-static"
-            (pkgs.callPackage ./doc { inherit extracted version; }))
-          self.lib.arkenfox.extracted)
-        // (mapAttrs'
-          (version: extracted: nameValuePair "arkenfox-v${ppVer version}-doc"
-            (pkgs.callPackage ./doc { inherit extracted version; css = "/style.css"; }))
-          self.lib.arkenfox.extracted);
+        ppVer = builtins.replaceStrings [ "." ] [ "_" ];
+        docs = pkgs:
+          (mapAttrs'
+            (version: extracted: nameValuePair "arkenfox-v${ppVer version}-doc-static"
+              (pkgs.callPackage ./doc { inherit extracted version; }))
+            self.lib.arkenfox.extracted)
+          // (mapAttrs'
+            (version: extracted: nameValuePair "arkenfox-v${ppVer version}-doc"
+              (pkgs.callPackage ./doc { inherit extracted version; css = "/style.css"; }))
+            self.lib.arkenfox.extracted);
 
-      type = extracted: import ./type.nix { inherit extracted pkgs; lib = pkgs.lib; };
+        type = extracted: import ./type.nix { inherit extracted pkgs; lib = pkgs.lib; };
 
-    in {
-      packages.x86_64-linux = {
-        arkenfox-extractor = extractor;
-        arkenfox-doc-css = pkgs.writeText "style.css" (builtins.readFile ./doc/style.css);
-        default = extractor;
-      } // (docs pkgs);
-
-      overlays = {
-        arkenfox = final: prev: ({
-          arkenfox-extractor = prev.callPackage ./extractor { };
+      in
+      {
+        packages = rec {
+          arkenfox-extractor = extractor;
           arkenfox-doc-css = pkgs.writeText "style.css" (builtins.readFile ./doc/style.css);
-        } // (docs prev));
-      };
-      overlay = self.overlays.arkenfox;
+          default = extractor;
+        } // (docs pkgs);
 
-      lib.arkenfox = {
-        supportedVersions = versions;
-        extracted = mapAttrs (_: v: import "${extract v}") js;
-        types = mapAttrs (_: type) self.lib.arkenfox.extracted;
-      };
+        overlays = rec {
+          arkenfox = final: prev: ({
+            arkenfox-extractor = prev.callPackage ./extractor { };
+            arkenfox-doc-css = pkgs.writeText "style.css" (builtins.readFile ./doc/style.css);
+          } // (docs prev));
+        };
+        overlay = self.overlays.arkenfox;
 
-      hmModules = {
-        arkenfox = import ./hm.nix self.lib.arkenfox.supportedVersions self.lib.arkenfox.extracted;
-        default = self.hmModules.arkenfox;
-      };
-    };
+        lib.arkenfox = rec {
+          supportedVersions = versions;
+          extracted = mapAttrs (_: v: import "${extract v}") js;
+          types = mapAttrs (_: type) self.lib.arkenfox.extracted;
+        };
+
+        hmModules = rec {
+          arkenfox = import ./hm.nix self.lib.${system}.arkenfox.supportedVersions self.lib.${system}.arkenfox.extracted;
+          default = self.hmModules.${system}.arkenfox;
+        };
+      }
+    );
 }
