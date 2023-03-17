@@ -32,7 +32,7 @@
   };
 
   outputs = inputs@{ self, nixpkgs, flake-utils, ... }:
-    flake-utils.lib.eachDefaultSystem ++ [ "powerpc64le-linux" ] (system:
+    flake-utils.lib.eachDefaultSystem (system:
       let
 
         pkgs = nixpkgs.legacyPackages.${system};
