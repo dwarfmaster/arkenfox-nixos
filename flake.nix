@@ -46,6 +46,12 @@
           alejandra.enable = true;
           deadnix.enable = true;
           statix.enable = true;
+          perltidy = {
+            enable = true;
+            name = "Tidy perl code";
+            types = ["perl"];
+            entry = "${pkgs.perl.passthru.pkgs.PerlTidy}/bin/perltidy -b";
+          };
         };
       };
     };
