@@ -56,6 +56,8 @@
       };
     };
 
+    formatter.x86_64-linux = pkgs.alejandra;
+
     packages.x86_64-linux =
       {
         arkenfox-extractor = extractor;
