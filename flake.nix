@@ -8,20 +8,17 @@
       flake = false;
     };
     pre-commit.url = "github:cachix/pre-commit-hooks.nix";
+    flake-utils.url = "github:numtide/flake-utils";
   };
 
   outputs = {
     self,
     nixpkgs,
     pre-commit,
+    flake-utils,
     ...
   }: let
-    pkgs = import nixpkgs {system = "x86_64-linux";};
-    inherit (pkgs) lib callPackage;
-    inherit (lib) mapAttrs' nameValuePair;
-
-    extractor = callPackage ./extractor {};
-    generator = callPackage ./generator {arkenfox-extractor = extractor;};
+    inherit (nixpkgs.lib) mapAttrs' nameValuePair;
 
     ppVer = builtins.replaceStrings ["."] ["_"];
     docs = pkgs:
@@ -38,9 +35,13 @@
             css = "/style.css";
           }))
         self.lib.arkenfox.extracted);
-  in {
-    checks.x86_64-linux = {
-      pre-commit-check = pre-commit.lib.x86_64-linux.run {
+
+    outputs = flake-utils.lib.eachDefaultSystem (system: let
+      pkgs = nixpkgs.legacyPackages."${system}";
+      extractor = pkgs.callPackage ./extractor {};
+      generator = pkgs.callPackage ./generator {arkenfox-extractor = extractor;};
+    in {
+      checks.pre-commit-check = pre-commit.lib."${system}".run {
         src = ./.;
         hooks = {
           alejandra.enable = true;
@@ -54,40 +55,42 @@
           };
         };
       };
-    };
 
-    formatter.x86_64-linux = pkgs.alejandra;
+      formatter = pkgs.alejandra;
 
-    packages.x86_64-linux =
-      {
-        arkenfox-extractor = extractor;
-        arkenfox-generator = generator;
-        arkenfox-doc-css = pkgs.writeText "style.css" (builtins.readFile ./doc/style.css);
-        default = extractor;
-      }
-      // (docs pkgs);
-
-    overlays = {
-      arkenfox = _: prev: (let
-        extractor = prev.callPackage ./extractor {};
-      in
+      packages =
         {
-          arkenfox-extractor = prev.callPackage ./extractor {};
-          arkenfox-generator = prev.callPackage ./generator {arkenfox-extractor = extractor;};
+          arkenfox-extractor = extractor;
+          arkenfox-generator = generator;
           arkenfox-doc-css = pkgs.writeText "style.css" (builtins.readFile ./doc/style.css);
+          default = extractor;
         }
-        // (docs prev));
-      default = self.overlays.arkenfox;
-    };
+        // (docs pkgs);
+    });
+  in
+    outputs
+    // {
+      overlays = {
+        arkenfox = _: prev: (let
+          extractor = prev.callPackage ./extractor {};
+        in
+          {
+            arkenfox-extractor = prev.callPackage ./extractor {};
+            arkenfox-generator = prev.callPackage ./generator {arkenfox-extractor = extractor;};
+            arkenfox-doc-css = prev.writeText "style.css" (builtins.readFile ./doc/style.css);
+          }
+          // (docs prev));
+        default = self.overlays.arkenfox;
+      };
 
-    lib.arkenfox = {
-      supportedVersions = builtins.attrNames self.lib.arkenfox.extracted;
-      extracted = import ./autogen;
-    };
+      lib.arkenfox = {
+        supportedVersions = builtins.attrNames self.lib.arkenfox.extracted;
+        extracted = import ./autogen;
+      };
 
-    hmModules = {
-      arkenfox = import ./hm.nix self.lib.arkenfox.supportedVersions self.lib.arkenfox.extracted;
-      default = self.hmModules.arkenfox;
+      hmModules = {
+        arkenfox = import ./hm.nix self.lib.arkenfox.supportedVersions self.lib.arkenfox.extracted;
+        default = self.hmModules.arkenfox;
+      };
     };
-  };
 }
