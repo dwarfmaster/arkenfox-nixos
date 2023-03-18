@@ -1,7 +1,6 @@
 versions: extracted: {
   config,
   lib,
-  pkgs,
   ...
 }: let
   inherit (lib) types;

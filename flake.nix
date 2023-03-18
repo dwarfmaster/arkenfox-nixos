@@ -7,16 +7,18 @@
       url = "github:edolstra/flake-compat";
       flake = false;
     };
+    pre-commit.url = "github:cachix/pre-commit-hooks.nix";
   };
 
   outputs = {
     self,
     nixpkgs,
-    flake-compat,
+    pre-commit,
+    ...
   }: let
     pkgs = import nixpkgs {system = "x86_64-linux";};
     inherit (pkgs) lib callPackage;
-    inherit (lib) mapAttrs mapAttrs' nameValuePair;
+    inherit (lib) mapAttrs' nameValuePair;
 
     extractor = callPackage ./extractor {};
     generator = callPackage ./generator {arkenfox-extractor = extractor;};
@@ -37,6 +39,17 @@
           }))
         self.lib.arkenfox.extracted);
   in {
+    checks.x86_64-linux = {
+      pre-commit-check = pre-commit.lib.x86_64-linux.run {
+        src = ./.;
+        hooks = {
+          alejandra.enable = true;
+          deadnix.enable = true;
+          statix.enable = true;
+        };
+      };
+    };
+
     packages.x86_64-linux =
       {
         arkenfox-extractor = extractor;
@@ -47,15 +60,16 @@
       // (docs pkgs);
 
     overlays = {
-      arkenfox = final: prev: (let
+      arkenfox = _: prev: (let
         extractor = prev.callPackage ./extractor {};
-      in {
+      in
+        {
           arkenfox-extractor = prev.callPackage ./extractor {};
-          arkenfox-generator = prev.callPackage ./generator { arkenfox-extractor = extractor; };
+          arkenfox-generator = prev.callPackage ./generator {arkenfox-extractor = extractor;};
           arkenfox-doc-css = pkgs.writeText "style.css" (builtins.readFile ./doc/style.css);
         }
         // (docs prev));
-      default = final: prev: self.overlays.arkenfox final prev;
+      default = self.overlays.arkenfox;
     };
 
     lib.arkenfox = {
