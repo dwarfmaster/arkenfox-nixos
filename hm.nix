@@ -25,7 +25,7 @@ in {
           description = "Setup arkenfox user.js in profile";
           type = import ./type.nix {
             extracted = ext;
-            inherit pkgs lib;
+            inherit lib;
           };
           default = {};
         };

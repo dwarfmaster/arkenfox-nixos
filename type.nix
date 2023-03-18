@@ -1,11 +1,8 @@
 {
   extracted,
   lib,
-  pkgs,
-  ...
 }: let
   inherit (lib) types mapAttrs mapAttrsToList nameValuePair;
-  inherit (lib.modules) evalModules;
 
   mapListToAttrs = f: lst:
     builtins.listToAttrs (map f lst);
