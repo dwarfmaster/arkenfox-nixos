@@ -1,0 +1,43 @@
+name: Regenerate
+on:
+  workflow_dispatch: # allows manual triggering
+  schedule:
+    - cron: '0 0 * * 0' # runs weekly on Sunday at 00:00
+
+jobs:
+  update-flake-lock:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v17
+
+      - name: Setup git
+        shell: bash
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Generate files
+        shell: bash
+        run: |
+          cd autogen
+          nix run ".#arkenfox-generator"
+          git commit . -m "Re-extract jsons"
+
+      - name: Update flake.lock
+        shell: bash
+        run: |
+          nix flake update --commit-lock-file --commit-lockfile-summary "Update inputs"
+
+      - name: Create PR
+        uses: peter-evans/create-pull-request@v4
+        with:
+          branch: update_action
+          delete-branch: true
+          committer: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
+          author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
+          title: Update
+
