@@ -92,6 +92,7 @@
     js = builtins.removeAttrs inputs ["self" "nixpkgs"];
 
     extractor = callPackage ./extractor {};
+    generator = callPackage ./generator {arkenfox-extractor = extractor;};
     extract = import ./extractor/extract.nix {inherit pkgs extractor;};
     versions = builtins.attrNames js;
 
@@ -120,6 +121,7 @@
     packages.x86_64-linux =
       {
         arkenfox-extractor = extractor;
+        arkenfox-generator = generator;
         arkenfox-doc-css = pkgs.writeText "style.css" (builtins.readFile ./doc/style.css);
         default = extractor;
       }
