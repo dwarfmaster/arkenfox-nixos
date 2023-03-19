@@ -54,9 +54,11 @@
             entry = "${pkgs.perl.passthru.pkgs.PerlTidy}/bin/perltidy -b";
           };
         };
+        settings = {
+          alejandra.exclude = ["autogen"];
+          statix.ignore = ["autogen/*"];
+        };
       };
-
-      formatter = pkgs.alejandra;
 
       packages =
         {

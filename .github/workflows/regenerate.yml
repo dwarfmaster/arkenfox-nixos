@@ -25,7 +25,6 @@ jobs:
         run: |
           cd autogen
           nix run ".#arkenfox-generator"
-          nix fmt
           git commit . -m "Re-extract jsons"
 
       - name: Update flake.lock
