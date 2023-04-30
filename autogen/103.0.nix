@@ -191,8 +191,8 @@
         title = "set preferred language for displaying pages";
         description = ''
           '';
-        "SETTING" = "General>Language and Appearance>Language>Choose your preferred language...";
         "TEST" = "https://addons.mozilla.org/about";
+        "SETTING" = "General>Language and Appearance>Language>Choose your preferred language...";
         links = {
         };
       };
@@ -256,8 +256,8 @@
         title = "disable personalized Extension Recommendations in about:addons and AMO [FF65+]";
         description = ''
           '';
-        "SETTING" = "Privacy & Security>Firefox Data Collection & Use>Allow Firefox to make personalized extension recommendations";
         "NOTE" = "This pref has no effect when Health Reports (0331) are disabled";
+        "SETTING" = "Privacy & Security>Firefox Data Collection & Use>Allow Firefox to make personalized extension recommendations";
         links = {
           "1" = "https://support.mozilla.org/kb/personalized-extension-recommendations";
         };
@@ -311,8 +311,8 @@
           '';
         "NOTE" = "\"toolkit.telemetry.enabled\" is now LOCKED to reflect prerelease (true) or release builds (false) [2]";
         links = {
-          "2" = "https://medium.com/georg-fritzsche/data-preference-changes-in-firefox-58-2d5df9c428b5";
           "1" = "https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/telemetry/internals/preferences.html";
+          "2" = "https://medium.com/georg-fritzsche/data-preference-changes-in-firefox-58-2d5df9c428b5";
         };
       };
     };
@@ -447,8 +447,8 @@
         title = "disable SB (Safe Browsing)";
         description = ''
           '';
-        "SETTING" = "Privacy & Security>Security>... Block dangerous and deceptive content";
         "WARNING" = "Do this at your own risk! These are the master switches";
+        "SETTING" = "Privacy & Security>Security>... Block dangerous and deceptive content";
         links = {
         };
       };
@@ -523,10 +523,10 @@
           
         '';
       links = {
-        "1" = "https://feeding.cloud.geek.nz/posts/how-safe-browsing-works-in-firefox/";
-        "3" = "https://support.mozilla.org/kb/how-does-phishing-and-malware-protection-work";
         "4" = "https://educatedguesswork.org/posts/safe-browsing-privacy/";
+        "3" = "https://support.mozilla.org/kb/how-does-phishing-and-malware-protection-work";
         "2" = "https://wiki.mozilla.org/Security/Safe_Browsing";
+        "1" = "https://feeding.cloud.geek.nz/posts/how-safe-browsing-works-in-firefox/";
       };
       parrots = [
         "0400 syntax error: the parrot's passed on!"
@@ -636,8 +636,8 @@
             OS/network level, and/or configured properly in VPN setups. If you are not masking your IP,
             then this won't make much difference. If you are masking your IP, then it can only help.
           '';
-        "STATS" = "Firefox telemetry (July 2021) shows ~10% of all connections are IPv6";
         "TEST" = "https://ipleak.org/";
+        "STATS" = "Firefox telemetry (July 2021) shows ~10% of all connections are IPv6";
         "NOTE" = "PHP defaults to IPv6 with \"localhost\". Use \"php -S 127.0.0.1:PORT\"";
         links = {
           "1" = "https://www.internetsociety.org/tag/ipv6-security/ (Myths 2,4,5,6)";
@@ -684,9 +684,9 @@
             dav, cdda, gphoto2, trash, etc. By default only sftp is accepted (FF87+)
           '';
         links = {
-          "1" = "https://bugzilla.mozilla.org/1433507";
-          "3" = "https://en.wikipedia.org/wiki/GIO_(software)";
           "2" = "https://en.wikipedia.org/wiki/GVfs";
+          "3" = "https://en.wikipedia.org/wiki/GIO_(software)";
+          "1" = "https://bugzilla.mozilla.org/1433507";
         };
       };
     };
@@ -734,8 +734,8 @@
         links = {
           "4" = "https://www.eff.org/deeplinks/2020/12/dns-doh-and-odoh-oh-my-year-review-2020";
           "3" = "https://support.mozilla.org/en-US/kb/firefox-dns-over-https";
-          "1" = "https://hacks.mozilla.org/2018/05/a-cartoon-intro-to-dns-over-https/";
           "2" = "https://wiki.mozilla.org/Security/DOH-resolver-policy";
+          "1" = "https://hacks.mozilla.org/2018/05/a-cartoon-intro-to-dns-over-https/";
         };
       };
     };
@@ -762,8 +762,8 @@
             Examples: "secretplace,com", "secretplace/com", "secretplace com", "secret place.com"
             dropdown, or using keyword search shortcuts you configure in options (e.g. "d" for DuckDuckGo)
           '';
-        "SETUP-CHROME" = "Override this if you trust and use a privacy respecting search engine";
         "NOTE" = "This does not affect explicit user action such as using search buttons in the";
+        "SETUP-CHROME" = "Override this if you trust and use a privacy respecting search engine";
         links = {
         };
       };
@@ -795,8 +795,8 @@
         title = "disable live search suggestions";
         description = ''
           '';
-        "NOTE" = "Both must be true for the location bar to work";
         "SETUP-CHROME" = "Override these if you trust and use a privacy respecting search engine";
+        "NOTE" = "Both must be true for the location bar to work";
         "SETTING" = "Search>Provide search suggestions | Show search suggestions in address bar results";
         links = {
         };
@@ -887,8 +887,8 @@
         title = "disable Form Autofill";
         description = ''
           '';
-        "NOTE" = "Heuristics controls Form Autofill on forms without @autocomplete attributes";
         "SETTING" = "Privacy & Security>Forms and Autofill>Autofill addresses";
+        "NOTE" = "Heuristics controls Form Autofill on forms without @autocomplete attributes";
         links = {
           "1" = "https://wiki.mozilla.org/Firefox/Features/Form_Autofill";
         };
@@ -907,11 +907,11 @@
           '';
         "SETUP-HARDEN" = "Bulk rapid history sniffing was mitigated in 2010 [1][2]. Slower and more expensive";
         links = {
-          "4" = "https://earthlng.github.io/testpages/visited_links.html (see github wiki APPENDIX A on how to use)";
           "3" = "https://bugzilla.mozilla.org/1632765";
-          "1" = "https://developer.mozilla.org/docs/Web/CSS/Privacy_and_the_:visited_selector";
-          "5" = "https://lcamtuf.blogspot.com/2016/08/css-mix-blend-mode-is-bad-for-keeping.html";
           "2" = "https://dbaron.org/mozilla/visited-privacy";
+          "5" = "https://lcamtuf.blogspot.com/2016/08/css-mix-blend-mode-is-bad-for-keeping.html";
+          "4" = "https://earthlng.github.io/testpages/visited_links.html (see github wiki APPENDIX A on how to use)";
+          "1" = "https://developer.mozilla.org/docs/Web/CSS/Privacy_and_the_:visited_selector";
         };
       };
     };
@@ -936,11 +936,11 @@
         description = ''
             can leak in cross-site forms *and* be spoofed
           '';
-        "NOTE" = "Username & password is still available when you enter the field";
         "SETTING" = "Privacy & Security>Logins and Passwords>Autofill logins and passwords";
+        "NOTE" = "Username & password is still available when you enter the field";
         links = {
-          "2" = "https://homes.esat.kuleuven.be/~asenol/leaky-forms/";
           "1" = "https://freedom-to-tinker.com/2017/12/27/no-boundaries-for-user-identities-web-trackers-exploit-browser-login-managers/";
+          "2" = "https://homes.esat.kuleuven.be/~asenol/leaky-forms/";
         };
       };
     };
@@ -1007,8 +1007,8 @@
         title = "disable disk cache";
         description = ''
           '';
-        "NOTE" = "We also clear cache on exit (2811)";
         "SETUP-CHROME" = "If you think disk cache helps perf, then feel free to override this";
+        "NOTE" = "We also clear cache on exit (2811)";
         links = {
         };
       };
@@ -1110,9 +1110,9 @@
         "STATS" = "SSL Labs (July 2021) reports over 99% of top sites have secure renegotiation [4]";
         "SETUP-WEB" = "SSL_ERROR_UNSAFE_NEGOTIATION: is it worth overriding this for that one site?";
         links = {
-          "2" = "https://datatracker.ietf.org/doc/html/rfc5746";
           "1" = "https://wiki.mozilla.org/Security:Renegotiation";
           "3" = "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3555";
+          "2" = "https://datatracker.ietf.org/doc/html/rfc5746";
           "4" = "https://www.ssllabs.com/ssl-pulse/";
         };
       };
@@ -1165,8 +1165,8 @@
             could have been revoked) and/or you could be under attack (e.g. malicious blocking of OCSP servers)
           '';
         links = {
-          "1" = "https://blog.mozilla.org/security/2013/07/29/ocsp-stapling-in-firefox/";
           "2" = "https://www.imperialviolet.org/2014/04/19/revchecking.html";
+          "1" = "https://blog.mozilla.org/security/2013/07/29/ocsp-stapling-in-firefox/";
         };
       };
     };
@@ -1215,8 +1215,8 @@
             3 = consult CRLite and enforce "Not Revoked" results, but defer to OCSP for "Revoked" (FF99+, default FF100+)
           '';
         links = {
-          "1" = "https://bugzilla.mozilla.org/buglist.cgi?bug_id=1429800,1670985,1753071";
           "2" = "https://blog.mozilla.org/security/tag/crlite/";
+          "1" = "https://bugzilla.mozilla.org/buglist.cgi?bug_id=1429800,1670985,1753071";
         };
       };
     };
@@ -1287,8 +1287,8 @@
             Bug: warning padlock not indicated for subresources on a secure page! [2]
           '';
         links = {
-          "2" = "https://bugzilla.mozilla.org/1353705";
           "1" = "https://wiki.mozilla.org/Security:Renegotiation";
+          "2" = "https://bugzilla.mozilla.org/1353705";
         };
       };
     };
@@ -1505,8 +1505,8 @@
             When using a system-wide proxy, it uses the proxy interface
           '';
         links = {
-          "2" = "https://wiki.mozilla.org/Media/WebRTC/Privacy";
           "1" = "https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate";
+          "2" = "https://wiki.mozilla.org/Media/WebRTC/Privacy";
         };
       };
     };
@@ -1561,8 +1561,8 @@
             Optionally hide the setting which also disables the DRM prompt
           '';
         "SETTING" = "General>DRM Content>Play DRM-controlled content";
-        "TEST" = "https://bitmovin.com/demos/drm";
         "SETUP-WEB" = "e.g. Netflix, Amazon Prime, Hulu, HBO, Disney+, Showtime, Starz, DirectTV";
+        "TEST" = "https://bitmovin.com/demos/drm";
         links = {
           "1" = "https://www.eff.org/deeplinks/2017/10/drms-dead-canary-how-we-just-lost-web-what-we-learned-it-and-what-we-need-do-next";
         };
@@ -1798,9 +1798,9 @@
         "TEST" = "https://www.xn--80ak6aa92e.com/ (www.apple.com)";
         links = {
           "2" = "https://en.wikipedia.org/wiki/IDN_homograph_attack";
-          "1" = "https://wiki.mozilla.org/IDN_Display_Algorithm";
           "3" = "https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=punycode+firefox";
           "4" = "https://www.xudongz.com/blog/2017/idn-phishing/";
+          "1" = "https://wiki.mozilla.org/IDN_Display_Algorithm";
         };
       };
     };
@@ -1862,8 +1862,8 @@
         title = "enable user interaction for security by always asking where to download";
         description = ''
           '';
-        "SETTING" = "General>Downloads>Always ask you where to save files";
         "SETUP-CHROME" = "On Android this blocks longtapping and saving images";
+        "SETTING" = "General>Downloads>Always ask you where to save files";
         links = {
         };
       };
@@ -1969,8 +1969,8 @@
             ETP Strict Mode enables Total Cookie Protection (TCP)
             cross-site state tracking e.g. exceptions for SiteA and SiteB means PartyC on both sites is shared
           '';
-        "SETTING" = "to manage site exceptions: Options>Privacy & Security>Enhanced Tracking Protection>Manage Exceptions";
         "NOTE" = "Adding site exceptions disables all ETP protections for that site and increases the risk of";
+        "SETTING" = "to manage site exceptions: Options>Privacy & Security>Enhanced Tracking Protection>Manage Exceptions";
         links = {
           "1" = "https://blog.mozilla.org/security/2021/02/23/total-cookie-protection/";
         };
@@ -1987,9 +1987,9 @@
           '';
         "SETUP-HARDEN" = "Includes skip lists, heuristics (SmartBlock) and automatic grants";
         links = {
-          "2" = "https://hg.mozilla.org/mozilla-central/rev/e5483fd469ab#l4.12";
           "1" = "https://blog.mozilla.org/security/2021/07/13/smartblock-v2/";
           "3" = "https://developer.mozilla.org/en-US/docs/Web/Privacy/State_Partitioning#storage_access_heuristics";
+          "2" = "https://hg.mozilla.org/mozilla-central/rev/e5483fd469ab#l4.12";
         };
       };
     };
@@ -2073,9 +2073,9 @@
             serviceWorkers require an "Allow" permission. For cross-domain logins, add exceptions for
             both sites e.g. https://www.youtube.com (site) + https://accounts.google.com (single sign on)
           '';
-        "SETTING" = "to manage site exceptions: Options>Privacy & Security>Permissions>Settings";
         "WARNING" = "Be selective with what sites you \"Allow\", as they also disable partitioning (1767271)";
         "NOTE" = "\"offlineApps\": Offline Website Data: localStorage, service worker cache, QuotaManager (IndexedDB, asm-cache)";
+        "SETTING" = "to manage site exceptions: Options>Privacy & Security>Permissions>Settings";
         links = {
         };
       };
@@ -2207,8 +2207,8 @@
         "WARNING" = "DO NOT USE: the dimension pref is only meant for testing";
         "SETUP-WEB" = "This is independent of RFP (4501). If you're not using RFP, or you are but";
         links = {
-          "2" = "https://hg.mozilla.org/mozilla-central/rev/6d2d7856e468#l2.32";
           "1" = "https://bugzilla.mozilla.org/1407366";
+          "2" = "https://hg.mozilla.org/mozilla-central/rev/6d2d7856e468#l2.32";
         };
       };
     };
@@ -2293,8 +2293,8 @@
             Stops malicious window sizes and some screen resolution leaks.
             You can still right-click a link and open in a new window
           '';
-        "TEST" = "https://arkenfox.github.io/TZP/tzp.html#screen";
         "SETTING" = "General>Tabs>Open links in tabs instead of new windows";
+        "TEST" = "https://arkenfox.github.io/TZP/tzp.html#screen";
         links = {
           "1" = "https://gitlab.torproject.org/tpo/applications/tor-browser/-/issues/9881";
         };
@@ -2404,8 +2404,8 @@
             Firefox to clear them. PB is best used as a one off window (Menu>New Private Window) to provide
             a temporary self-contained new session. Close all Private Windows to clear the PB mode session.
           '';
-        "NOTE" = "The P in PB mode can be misleading: it means no \"persistent\" disk state such as history,";
         "SETTING" = "Privacy & Security>History>Custom Settings>Always use private browsing mode";
+        "NOTE" = "The P in PB mode can be misleading: it means no \"persistent\" disk state such as history,";
         links = {
           "1" = "https://wiki.mozilla.org/Private_Browsing";
           "2" = "https://support.mozilla.org/kb/common-myths-about-private-browsing";
@@ -2434,8 +2434,8 @@
         title = "disable saving passwords";
         description = ''
           '';
-        "NOTE" = "This does not clear any passwords already saved";
         "SETTING" = "Privacy & Security>Logins and Passwords>Ask to save logins and passwords for websites";
+        "NOTE" = "This does not clear any passwords already saved";
         links = {
         };
       };
@@ -2572,8 +2572,8 @@
         title = "disable browsing and download history";
         description = ''
           '';
-        "SETTING" = "Privacy & Security>History>Custom Settings>Remember browsing and download history";
         "NOTE" = "We also clear history and downloads on exit (2811)";
+        "SETTING" = "Privacy & Security>History>Custom Settings>Remember browsing and download history";
         links = {
         };
       };
@@ -2681,8 +2681,8 @@
         description = ''
           '';
         links = {
-          "2" = "https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=asm.js";
           "3" = "https://rh0dev.github.io/blog/2017/the-return-of-the-jit/";
+          "2" = "https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=asm.js";
           "1" = "http://asmjs.org/";
         };
       };
@@ -2718,9 +2718,9 @@
           '';
         "STATS" = "~0.2% of websites, about half of which are for crytopmining / malvertising [2][3]";
         links = {
+          "1" = "https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=wasm";
           "2" = "https://spectrum.ieee.org/tech-talk/telecom/security/more-worries-over-the-security-of-web-assembly";
           "3" = "https://www.zdnet.com/article/half-of-the-websites-using-webassembly-use-it-for-malicious-purposes";
-          "1" = "https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=wasm";
         };
       };
     };
@@ -3221,8 +3221,8 @@
       title = "DON'T BOTHER: FINGERPRINTING";
       description = ''
         '';
-      "WARNING" = "DO NOT USE with RFP. RFP already covers these and they can interfere";
       "WHY" = "They are insufficient to help anti-fingerprinting and do more harm than good";
+      "WARNING" = "DO NOT USE with RFP. RFP already covers these and they can interfere";
       links = {
       };
       parrots = [
