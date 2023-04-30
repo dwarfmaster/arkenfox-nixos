@@ -190,8 +190,8 @@
         title = "set preferred language for displaying pages";
         description = ''
           '';
-        "SETTING" = "General>Language and Appearance>Language>Choose your preferred language...";
         "TEST" = "https://addons.mozilla.org/about";
+        "SETTING" = "General>Language and Appearance>Language>Choose your preferred language...";
         links = {
         };
       };
@@ -334,8 +334,8 @@
         title = "disable personalized Extension Recommendations in about:addons and AMO [FF65+]";
         description = ''
           '';
-        "NOTE" = "This pref has no effect when Health Reports (0331) are disabled";
         "SETTING" = "Privacy & Security>Firefox Data Collection & Use>Allow Firefox to make personalized extension recommendations";
+        "NOTE" = "This pref has no effect when Health Reports (0331) are disabled";
         links = {
           "1" = "https://support.mozilla.org/kb/personalized-extension-recommendations";
         };
@@ -538,8 +538,8 @@
         title = "disable SB (Safe Browsing)";
         description = ''
           '';
-        "WARNING" = "Do this at your own risk! These are the master switches";
         "SETTING" = "Privacy & Security>Security>... Block dangerous and deceptive content";
+        "WARNING" = "Do this at your own risk! These are the master switches";
         links = {
         };
       };
@@ -614,9 +614,9 @@
           
         '';
       links = {
-        "1" = "https://feeding.cloud.geek.nz/posts/how-safe-browsing-works-in-firefox/";
-        "2" = "https://wiki.mozilla.org/Security/Safe_Browsing";
         "3" = "https://support.mozilla.org/kb/how-does-phishing-and-malware-protection-work";
+        "2" = "https://wiki.mozilla.org/Security/Safe_Browsing";
+        "1" = "https://feeding.cloud.geek.nz/posts/how-safe-browsing-works-in-firefox/";
       };
       parrots = [
         "0400 syntax error: the parrot's passed on!"
@@ -715,8 +715,8 @@
             then this won't make much difference. If you are masking your IP, then it can only help.
           '';
         "NOTE" = "PHP defaults to IPv6 with \"localhost\". Use \"php -S 127.0.0.1:PORT\"";
-        "TEST" = "https://ipleak.org/";
         "STATS" = "Firefox telemetry (July 2021) shows ~10% of all connections are IPv6";
+        "TEST" = "https://ipleak.org/";
         links = {
           "1" = "https://www.internetsociety.org/tag/ipv6-security/ (Myths 2,4,5,6)";
         };
@@ -794,8 +794,8 @@
             see "doh-rollout.home-region": USA Feb 2020, Canada July 2021 [3]
           '';
         links = {
-          "4" = "https://www.eff.org/deeplinks/2020/12/dns-doh-and-odoh-oh-my-year-review-2020";
           "1" = "https://hacks.mozilla.org/2018/05/a-cartoon-intro-to-dns-over-https/";
+          "4" = "https://www.eff.org/deeplinks/2020/12/dns-doh-and-odoh-oh-my-year-review-2020";
           "2" = "https://wiki.mozilla.org/Security/DOH-resolver-policy";
           "3" = "https://blog.mozilla.org/mozilla/news/firefox-by-default-dns-over-https-rollout-in-canada/";
         };
@@ -825,8 +825,8 @@
             dropdown, or using keyword search shortcuts you configure in options (e.g. "d" for DuckDuckGo)
             engine that respects privacy, then you probably don't need this
           '';
-        "NOTE" = "This does not affect explicit user action such as using search buttons in the";
         "SETUP-CHROME" = "If you don't, or rarely, type URLs, or you use a default search";
+        "NOTE" = "This does not affect explicit user action such as using search buttons in the";
         links = {
         };
       };
@@ -870,9 +870,9 @@
         title = "disable live search suggestions";
         description = ''
           '';
-        "SETUP-CHROME" = "Change these if you trust and use a privacy respecting search engine";
         "NOTE" = "Both must be true for the location bar to work";
         "SETTING" = "Search>Provide search suggestions | Show search suggestions in address bar results";
+        "SETUP-CHROME" = "Change these if you trust and use a privacy respecting search engine";
         links = {
         };
       };
@@ -962,8 +962,8 @@
         title = "disable Form Autofill";
         description = ''
           '';
-        "NOTE" = "Heuristics controls Form Autofill on forms without @autocomplete attributes";
         "SETTING" = "Privacy & Security>Forms and Autofill>Autofill addresses";
+        "NOTE" = "Heuristics controls Form Autofill on forms without @autocomplete attributes";
         links = {
           "1" = "https://wiki.mozilla.org/Firefox/Features/Form_Autofill";
         };
@@ -982,11 +982,11 @@
           '';
         "SETUP-HARDEN" = "Bulk rapid history sniffing was mitigated in 2010 [1][2]. Slower and more expensive";
         links = {
-          "5" = "https://lcamtuf.blogspot.com/2016/08/css-mix-blend-mode-is-bad-for-keeping.html";
-          "4" = "https://earthlng.github.io/testpages/visited_links.html (see github wiki APPENDIX A on how to use)";
           "1" = "https://developer.mozilla.org/docs/Web/CSS/Privacy_and_the_:visited_selector";
-          "3" = "https://bugzilla.mozilla.org/1632765";
+          "4" = "https://earthlng.github.io/testpages/visited_links.html (see github wiki APPENDIX A on how to use)";
+          "5" = "https://lcamtuf.blogspot.com/2016/08/css-mix-blend-mode-is-bad-for-keeping.html";
           "2" = "https://dbaron.org/mozilla/visited-privacy";
+          "3" = "https://bugzilla.mozilla.org/1632765";
         };
       };
     };
@@ -1036,8 +1036,8 @@
         description = ''
             can leak in cross-site forms *and* be spoofed
           '';
-        "NOTE" = "Username & password is still available when you enter the field";
         "SETTING" = "Privacy & Security>Logins and Passwords>Autofill logins and passwords";
+        "NOTE" = "Username & password is still available when you enter the field";
         links = {
           "1" = "https://freedom-to-tinker.com/2017/12/27/no-boundaries-for-user-identities-web-trackers-exploit-browser-login-managers/";
         };
@@ -1238,8 +1238,8 @@
         description = ''
           '';
         links = {
-          "1" = "https://github.com/tlswg/tls13-spec/issues/1001";
           "2" = "https://blog.cloudflare.com/tls-1-3-overview-and-q-and-a/";
+          "1" = "https://github.com/tlswg/tls13-spec/issues/1001";
         };
       };
     };
@@ -1340,8 +1340,8 @@
             In FF84+ it covers valid certs and in mode 2 doesn't fall back to OCSP
           '';
         links = {
-          "2" = "https://blog.mozilla.org/security/tag/crlite/";
           "1" = "https://bugzilla.mozilla.org/buglist.cgi?bug_id=1429800,1670985";
+          "2" = "https://blog.mozilla.org/security/tag/crlite/";
         };
       };
     };
@@ -1412,8 +1412,8 @@
             Bug: warning padlock not indicated for subresources on a secure page! [2]
           '';
         links = {
-          "1" = "https://wiki.mozilla.org/Security:Renegotiation";
           "2" = "https://bugzilla.mozilla.org/1353705";
+          "1" = "https://wiki.mozilla.org/Security:Renegotiation";
         };
       };
     };
@@ -1551,8 +1551,8 @@
         title = "enable the DNT (Do Not Track) HTTP header";
         description = ''
           '';
-        "SETTING" = "Privacy & Security>Enhanced Tracking Protection>Send websites a \"Do Not Track\" signal...";
         "NOTE" = "DNT is enforced with Enhanced Tracking Protection (2710)";
+        "SETTING" = "Privacy & Security>Enhanced Tracking Protection>Send websites a \"Do Not Track\" signal...";
         links = {
         };
       };
@@ -1596,8 +1596,8 @@
         title = "set behaviour on \"+ Tab\" button to display container menu on left click [FF74+]";
         description = ''
           '';
-        "NOTE" = "The menu is always shown on long press and right click";
         "SETTING" = "General>Tabs>Enable Container Tabs>Settings>Select a container for each new tab";
+        "NOTE" = "The menu is always shown on long press and right click";
         links = {
         };
       };
@@ -1610,8 +1610,8 @@
       links = {
         "2" = "https://addons.mozilla.org/firefox/addon/temporary-containers/";
         "3" = "https://medium.com/@stoically/enhance-your-privacy-in-firefox-with-temporary-containers-33925cd6cd21";
-        "4" = "https://github.com/stoically/temporary-containers/wiki";
         "1" = "https://wiki.mozilla.org/Security/Contextual_Identity_Project/Containers";
+        "4" = "https://github.com/stoically/temporary-containers/wiki";
       };
       parrots = [
         "1700 syntax error: the parrot's bit the dust!"
@@ -1647,8 +1647,8 @@
         "TEST" = "https://browserleaks.com/webrtc";
         links = {
           "1" = "https://bugzilla.mozilla.org/buglist.cgi?bug_id=1189041,1297416,1452713";
-          "2" = "https://wiki.mozilla.org/Media/WebRTC/Privacy";
           "3" = "https://tools.ietf.org/html/draft-ietf-rtcweb-ip-handling-12#section-5.2";
+          "2" = "https://wiki.mozilla.org/Media/WebRTC/Privacy";
         };
       };
     };
@@ -1787,8 +1787,8 @@
           '';
         "NOTE" = "Push requires service workers (2302) to subscribe to and display, and is behind";
         links = {
-          "1" = "https://support.mozilla.org/kb/push-notifications-firefox";
           "2" = "https://developer.mozilla.org/docs/Web/API/Push_API";
+          "1" = "https://support.mozilla.org/kb/push-notifications-firefox";
         };
       };
     };
@@ -1802,12 +1802,12 @@
           
         '';
       links = {
-        "5" = "  ChromeWorker: https://developer.mozilla.org/docs/Web/API/ChromeWorker";
-        "6" = " Notifications: https://support.mozilla.org/questions/1165867#answer-981820";
-        "2" = "        Worker: https://developer.mozilla.org/docs/Web/API/Worker";
         "3" = "Service Worker: https://developer.mozilla.org/docs/Web/API/Service_Worker_API";
+        "2" = "        Worker: https://developer.mozilla.org/docs/Web/API/Worker";
+        "6" = " Notifications: https://support.mozilla.org/questions/1165867#answer-981820";
         "4" = "  SharedWorker: https://developer.mozilla.org/docs/Web/API/SharedWorker";
         "1" = "   Web Workers: https://developer.mozilla.org/docs/Web/API/Web_Workers_API";
+        "5" = "  ChromeWorker: https://developer.mozilla.org/docs/Web/API/ChromeWorker";
       };
       parrots = [
         "2300 syntax error: the parrot's off the twig!"
@@ -2032,10 +2032,10 @@
         "SETUP-WEB" = "Might be undesirable for non-latin alphabet users since legitimate IDN's are also punycoded";
         "TEST" = "https://www.xn--80ak6aa92e.com/ (www.apple.com)";
         links = {
-          "3" = "https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=punycode+firefox";
           "2" = "https://en.wikipedia.org/wiki/IDN_homograph_attack";
-          "4" = "https://www.xudongz.com/blog/2017/idn-phishing/";
+          "3" = "https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=punycode+firefox";
           "1" = "https://wiki.mozilla.org/IDN_Display_Algorithm";
+          "4" = "https://www.xudongz.com/blog/2017/idn-phishing/";
         };
       };
     };
@@ -2097,8 +2097,8 @@
         title = "enable user interaction for security by always asking where to download";
         description = ''
           '';
-        "SETUP-CHROME" = "On Android this blocks longtapping and saving images";
         "SETTING" = "General>Downloads>Always ask you where to save files";
+        "SETUP-CHROME" = "On Android this blocks longtapping and saving images";
         links = {
         };
       };
@@ -2245,9 +2245,9 @@
             before the user agent disposes of site data in order to make room for other things.
           '';
         links = {
-          "1" = "https://developer.mozilla.org/docs/Web/API/StorageManager";
           "2" = "https://developer.mozilla.org/docs/Web/API/Storage_API";
           "3" = "https://blog.mozilla.org/l10n/2017/03/07/firefox-l10n-report-aurora-54/";
+          "1" = "https://developer.mozilla.org/docs/Web/API/StorageManager";
         };
       };
     };
@@ -2473,8 +2473,8 @@
           '';
         "NOTE" = "Setting this to false may reduce the breakage in 4001";
         links = {
-          "2" = "https://bugzilla.mozilla.org/1492607";
           "3" = "https://developer.mozilla.org/docs/Web/API/Window/postMessage";
+          "2" = "https://bugzilla.mozilla.org/1492607";
           "1" = "https://bugzilla.mozilla.org/1319773#c22";
         };
       };
@@ -2581,8 +2581,8 @@
             The format is "width1xheight1, width2xheight2, ..." (e.g. "800x600, 1000x1000")
             dislike the margins, then flip this pref, keeping in mind that it is effectively fingerprintable
           '';
-        "WARNING" = "DO NOT USE: the dimension pref is only meant for testing";
         "SETUP-WEB" = "This is independent of RFP (4501). If you're not using RFP, or you are but";
+        "WARNING" = "DO NOT USE: the dimension pref is only meant for testing";
         links = {
           "2" = "https://hg.mozilla.org/mozilla-central/rev/6d2d7856e468#l2.32";
           "1" = "https://bugzilla.mozilla.org/1407366";
@@ -2654,8 +2654,8 @@
             Fingerprinting: provides a uniform look and feel across platforms [2]
           '';
         links = {
-          "2" = "https://bugzilla.mozilla.org/1411425";
           "1" = "https://bugzilla.mozilla.org/1381938";
+          "2" = "https://bugzilla.mozilla.org/1411425";
         };
       };
     };
@@ -2756,8 +2756,8 @@
           FF91+
           531915 - use fdlibm's sin, cos and tan in jsmath (FF93, ESR91.1)
         '';
-      "TEST" = "https://arkenfox.github.io/TZP/tzp.html#screen";
       "WARNING" = "DO NOT USE extensions to alter RFP protected metrics";
+      "TEST" = "https://arkenfox.github.io/TZP/tzp.html#screen";
       links = {
       };
       parrots = [
@@ -2781,8 +2781,8 @@
         "NOTE" = "The P in PB mode can be misleading: it means no \"persistent\" disk state such as history,";
         "SETTING" = "Privacy & Security>History>Custom Settings>Always use private browsing mode";
         links = {
-          "1" = "https://wiki.mozilla.org/Private_Browsing";
           "2" = "https://support.mozilla.org/kb/common-myths-about-private-browsing";
+          "1" = "https://wiki.mozilla.org/Private_Browsing";
         };
       };
     };
@@ -2945,8 +2945,8 @@
         title = "disable browsing and download history";
         description = ''
           '';
-        "NOTE" = "We also clear history and downloads on exit (2811)";
         "SETTING" = "Privacy & Security>History>Custom Settings>Remember browsing and download history";
+        "NOTE" = "We also clear history and downloads on exit (2811)";
         links = {
         };
       };
@@ -3040,8 +3040,8 @@
         description = ''
           '';
         links = {
-          "1" = "https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=firefox+graphite";
           "2" = "https://en.wikipedia.org/wiki/Graphite_(SIL)";
+          "1" = "https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=firefox+graphite";
         };
       };
     };
@@ -3054,8 +3054,8 @@
         description = ''
           '';
         links = {
-          "2" = "https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=asm.js";
           "3" = "https://rh0dev.github.io/blog/2017/the-return-of-the-jit/";
+          "2" = "https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=asm.js";
           "1" = "http://asmjs.org/";
         };
       };
@@ -3263,8 +3263,8 @@
             0=always ask (default), 1=allow, 2=block
             exceptions as allow/block for frequently visited/annoying sites: i.e. not global
           '';
-        "SETTING" = "to manage site exceptions: Options>Privacy & Security>Permissions>Settings";
         "WHY" = "These are fingerprintable via Permissions API, except VR. Just add site";
+        "SETTING" = "to manage site exceptions: Options>Privacy & Security>Permissions>Settings";
         links = {
         };
       };
