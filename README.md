@@ -15,7 +15,7 @@ use a `user.js` : `programs.firefox.profiles.<name>.extraConfig` and
 The problem with directly using Arkenfox's `user.js` is that handling updates to
 file after having gone through it to edit your preferences is a bit of a pain.
 In order to improve the situation, we implemented a script that parses
-Arkenfox's `user.js` and generate a home-manager module that allows settings the
+Arkenfox's `user.js` and generate a home-manager module that allows setting the
 preferences using the merge algorithm of the NixOS module system. Furthermore,
 it keeps the edits outside of the generated module. Any drift between the
 settings and the `user.js` will be catched by the module type-system.
