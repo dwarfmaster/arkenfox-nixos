@@ -14,6 +14,7 @@
   "110.0" = import ./110.0.nix;
   "111.0" = import ./111.0.nix;
   "112.0" = import ./112.0.nix;
+  "115.0" = import ./115.0.nix;
   "91.0" = import ./91.0.nix;
   "91.1" = import ./91.1.nix;
   "92.0" = import ./92.0.nix;
