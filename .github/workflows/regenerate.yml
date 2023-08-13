@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install Nix
-        uses: cachix/install-nix-action@v17
+        uses: cachix/install-nix-action@v22
 
       - name: Setup git
         shell: bash
@@ -25,7 +25,7 @@ jobs:
         run: |
           cd autogen
           nix run ".#arkenfox-generator"
-          git commit . -m "Re-extract jsons"
+          if [ ! -z $(git ls-files --others) ] || ! (git diff-index --quiet HEAD --); then git commit . -m "Re-extract jsons"; fi
 
       - name: Update flake.lock
         shell: bash
