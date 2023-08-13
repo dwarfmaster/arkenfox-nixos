@@ -4,6 +4,7 @@
   perl,
   makeWrapper,
   git,
+  jq,
   arkenfox-extractor,
   ...
 }: let
@@ -23,6 +24,7 @@ in
       cp $src/bin/arkenfox-generator $out/bin
       wrapProgram $out/bin/arkenfox-generator \
         --prefix PATH : ${arkenfox-extractor}/bin \
-        --prefix PATH : ${git}/bin
+        --prefix PATH : ${git}/bin \
+        --prefix PATH : ${jq}/bin
     '';
   }

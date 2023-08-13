@@ -22,9 +22,16 @@ my %subsection_meta        = ();
 my %subsection_links       = ();
 my %viewed_subsections     = ();
 
+my $first_setting = $false;
+
 sub nix_sanitize {
     my $str = $_[0];
+
+    # Trim leading/trailing whitespace
+    $str =~ s/^\s+|\s+$//g;
+    $str =~ s/\\/\\\\/g;
     $str =~ s/"/\\"/g;
+    $str =~ s/\n/\\n/g;
     return $str;
 }
 
@@ -53,30 +60,46 @@ sub select_new_subsection {
 }
 
 sub close_section {
-    print "    meta = {\n";
-    print "      title = \"" . ( nix_sanitize $section_title) . "\";\n";
-    print "      description = ''$section_description\n";
-    print "        '';\n";
+    print "    \"meta\": {\n";
+    print "      \"title\": \"" . ( nix_sanitize $section_title) . "\",\n";
+    print "      \"description\": \""
+      . ( nix_sanitize $section_description) . "\",\n";
     keys %section_meta;
     while ( my ( $k, $v ) = each %section_meta ) {
         print "      \""
           . ( nix_sanitize $k)
-          . "\" = \""
-          . ( nix_sanitize $v) . "\";\n";
+          . "\": \""
+          . ( nix_sanitize $v) . "\",\n";
     }
-    print "      links = {\n";
+    print "      \"links\": {\n";
+    my $first = $true;
     keys %section_links;
     while ( my ( $k, $v ) = each %section_links ) {
-        print "        \"$k\" = \"$v\";\n";
+        if ( !$first ) {
+            print ",\n";
+        }
+        $first = $false;
+        print "        \"$k\": \"$v\"";
     }
-    print "      };\n";
-    print "      parrots = [\n";
+    if ( !$first ) {
+        print "\n";
+    }
+    print "      },\n";
+    print "      \"parrots\": [\n";
+    $first = $true;
     foreach my $parrot (@section_parrots) {
-        print "        $parrot\n";
+        if ( !$first ) {
+            print ",\n";
+        }
+        $first = $false;
+        print "        $parrot";
     }
-    print "      ];\n";
-    print "    };\n";
-    print "  };\n";
+    if ( !$first ) {
+        print "\n";
+    }
+    print "      ]\n";
+    print "    }\n";
+    print "  }";
 
     $section_description = "";
     %section_meta        = ();
@@ -85,33 +108,45 @@ sub close_section {
 }
 
 sub close_subsection {
-    print "      ];\n";
-    print "      meta = {\n";
-    print "        title = \"" . ( nix_sanitize $subsection_title) . "\";\n";
-    print "        description = ''$subsection_description\n";
-    print "          '';\n";
+    if ( !$first_setting ) {
+        print "\n";
+    }
+    print "      ],\n";
+    print "      \"meta\": {\n";
+    print "        \"title\": \"" . ( nix_sanitize $subsection_title) . "\",\n";
+    print "        \"description\": \""
+      . ( nix_sanitize $subsection_description) . "\",\n";
     keys %subsection_meta;
     while ( my ( $k, $v ) = each %subsection_meta ) {
         print "        \""
           . ( nix_sanitize $k)
-          . "\" = \""
-          . ( nix_sanitize $v) . "\";\n";
+          . "\": \""
+          . ( nix_sanitize $v) . "\",\n";
     }
-    print "        links = {\n";
+    print "        \"links\": {\n";
+    my $first = $true;
     keys %subsection_links;
     while ( my ( $k, $v ) = each %subsection_links ) {
-        print "          \"$k\" = \"$v\";\n";
+        if ( !$first ) {
+            print ",\n";
+        }
+        $first = $false;
+        print "          \"$k\": \"$v\"";
     }
-    print "        };\n";
-    print "      };\n";
-    print "    };\n";
+    if ( !$first ) {
+        print "\n";
+    }
+    print "        }\n";
+    print "      }\n";
+    print "    },\n";
 
     $subsection_description = "";
     %subsection_links       = ();
     %subsection_meta        = ();
 }
 
-print "{\n  \"$section_number\" = {\n";
+my $first_section = $true;
+print "{\n  \"$section_number\": {\n";
 while ( my $line = <> ) {
 
     # Section description
@@ -121,7 +156,7 @@ while ( my $line = <> ) {
         elsif ( $line =~ /^\s*\[(.*)\] (.*)$/ )  { $section_meta{$1}  = $2; }
         else {
             $line =~ /^\s+(.*)$/;
-            $section_description = "$section_description\n          $1";
+            $section_description = "$section_description\n$1";
         }
     }
 
@@ -132,7 +167,11 @@ while ( my $line = <> ) {
             next;
         }
         $in_subsection or die "Found preference \"$1\" outside subsection";
-        print "        { name = \"$1\"; enabled = true; value = $2; }\n";
+        if ( !$first_setting ) {
+            print ",\n";
+        }
+        $first_setting = $false;
+        print "        { \"name\": \"$1\", \"enabled\": true, \"value\": $2 }";
     }
 
     # Disabled preference
@@ -142,7 +181,11 @@ while ( my $line = <> ) {
             next;
         }
         $in_subsection or die "Found preference \"$1\" outside subsection";
-        print "        { name = \"$1\"; enabled = false; value = $2; }\n";
+        if ( !$first_setting ) {
+            print ",\n";
+        }
+        $first_setting = $false;
+        print "        { \"name\": \"$1\", \"enabled\": false, \"value\": $2 }";
     }
 
     # Subsection meta
@@ -154,7 +197,7 @@ while ( my $line = <> ) {
         $subsection_meta{$1} = $2;
     }
     elsif ( $in_subsection and $line =~ /^\s*\* (.*?)( \*\*\*\/)?$/ ) {
-        $subsection_description = "$subsection_description\n            $1";
+        $subsection_description = "$subsection_description\n$1";
     }
 
     # Subsection
@@ -163,30 +206,39 @@ while ( my $line = <> ) {
         $subsection_number = select_new_subsection $1;
         $subsection_title  = $2;
         $in_subsection     = $true;
-        print "    \"$subsection_number\" = {\n      settings = [\n";
+        $first_setting     = $true;
+        print "    \"$subsection_number\": {\n      \"settings\": [\n";
     }
 
     # Section
     elsif ( $line =~ /^\/\*\*\* \[SECTION (\d\d\d\d)\]: (.*?)( \*\*\*\/)?$/ ) {
+        $first_section = $false;
         my $temp_section_title  = $2;
         my $temp_section_number = $1;
         last if $temp_section_number eq "9999";
         $in_subsection = $false;
         close_subsection();
         close_section();
+        if ( !$first_section ) {
+            print ",\n";
+        }
         $section_title          = $temp_section_title;
         $section_number         = select_new_section $temp_section_number;
         $in_section_description = $line !~ /\*\*\*\/$/;
-        print "  \"$section_number\" = {\n";
+        print "  \"$section_number\": {\n";
 
         if ( $section_number eq "9000" ) {
             $in_subsection     = $true;
             $subsection_number = "9000";
             $subsection_title  = "PERSONAL";
-            print "    \"$subsection_number\" = {\n      settings = [\n";
+            $first_setting     = $true;
+            print "    \"$subsection_number\": {\n      \"settings\": [\n";
         }
     }
 }
 close_subsection();
 close_section();
+if ( !$first_section ) {
+    print "\n";
+}
 print "}\n";
