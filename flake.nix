@@ -2,7 +2,7 @@
   description = "Utilities to use arkenfox's user.js for Firefox";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/release-22.05";
+    nixpkgs.url = "nixpkgs/release-23.05";
     flake-compat = {
       url = "github:edolstra/flake-compat";
       flake = false;
