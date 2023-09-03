@@ -15,6 +15,7 @@
   "111.0" = builtins.fromJSON (builtins.readFile ./111.0.json);
   "112.0" = builtins.fromJSON (builtins.readFile ./112.0.json);
   "115.0" = builtins.fromJSON (builtins.readFile ./115.0.json);
+  "115.1" = builtins.fromJSON (builtins.readFile ./115.1.json);
   "91.0" = builtins.fromJSON (builtins.readFile ./91.0.json);
   "91.1" = builtins.fromJSON (builtins.readFile ./91.1.json);
   "92.0" = builtins.fromJSON (builtins.readFile ./92.0.json);
