@@ -742,26 +742,6 @@
     }
   },
   "0700": {
-    "0701": {
-      "meta": {
-        "NOTE": "PHP defaults to IPv6 with \"localhost\". Use \"php -S 127.0.0.1:PORT\"",
-        "SETUP-WEB": "PR_CONNECT_RESET_ERROR: this pref *might* be the cause",
-        "STATS": "Firefox telemetry (Feb 2023) shows ~9% of successful connections are IPv6",
-        "TEST": "https://ipleak.org/",
-        "description": "IPv6 can be abused, especially with MAC addresses, and can leak with VPNs: assuming\nyour ISP and/or router and/or website is IPv6 capable. Most sites will fall back to IPv4\nOS/network level, and/or configured properly in VPN setups. If you are not masking your IP,\nthen this won't make much difference. If you are masking your IP, then it can only help.",
-        "links": {
-          "1": "https://www.internetsociety.org/tag/ipv6-security/ (Myths 2,4,5,6)"
-        },
-        "title": "disable IPv6"
-      },
-      "settings": [
-        {
-          "enabled": true,
-          "name": "network.dns.disableIPv6",
-          "value": true
-        }
-      ]
-    },
     "0702": {
       "meta": {
         "description": "e.g. in Tor, this stops your local DNS server from knowing your Tor destination\nas a remote Tor node will handle the DNS request",
@@ -875,26 +855,10 @@
       "parrots": [
         "0700 syntax error: the parrot's given up the ghost!"
       ],
-      "title": "DNS / DoH / PROXY / SOCKS / IPv6"
+      "title": "DNS / DoH / PROXY / SOCKS"
     }
   },
   "0800": {
-    "0801": {
-      "meta": {
-        "NOTE": "This does not affect explicit user action such as using search buttons in the",
-        "SETUP-CHROME": "Override this if you trust and use a privacy respecting search engine",
-        "description": "Don't leak URL typos to a search engine, give an error message instead\nExamples: \"secretplace,com\", \"secretplace/com\", \"secretplace com\", \"secret place.com\"\ndropdown, or using keyword search shortcuts you configure in options (e.g. \"d\" for DuckDuckGo)",
-        "links": {},
-        "title": "disable location bar using search"
-      },
-      "settings": [
-        {
-          "enabled": true,
-          "name": "keyword.enabled",
-          "value": false
-        }
-      ]
-    },
     "0802": {
       "meta": {
         "description": "domain guessing intercepts DNS \"hostname not found errors\" and resends a\nrequest (e.g. by adding www or .com). This is inconsistent use (e.g. FQDNs), does not work\nvia Proxy Servers (different error), is a flawed use of DNS (TLDs: why treat .com\nas the 411 for DNS errors?), privacy issues (why connect to sites you didn't\nintend to), can leak sensitive data (e.g. query strings: e.g. Princeton attack),\nand is a security risk (e.g. common typos & malicious sites set up to exploit this)",
@@ -1492,21 +1456,6 @@
     }
   },
   "1600": {
-    "1601": {
-      "meta": {
-        "SETUP-WEB": "Breakage: older modems/routers and some sites e.g banks, vimeo, icloud, instagram",
-        "description": "0=always (default), 1=only if base domains match, 2=only if hosts match\nIf \"2\" is too strict, then override to \"0\" and use Smart Referer extension (Strict mode + add exceptions)",
-        "links": {},
-        "title": "control when to send a cross-origin referer"
-      },
-      "settings": [
-        {
-          "enabled": true,
-          "name": "network.http.referer.XOriginPolicy",
-          "value": 2
-        }
-      ]
-    },
     "1602": {
       "meta": {
         "description": "0=send full URI (default), 1=scheme+host+port+path, 2=scheme+host+port",
@@ -1529,7 +1478,7 @@
       "parrots": [
         "1600 syntax error: the parrot rests in peace!"
       ],
-      "title": "HEADERS / REFERERS"
+      "title": "REFERERS"
     }
   },
   "1700": {
@@ -1637,45 +1586,6 @@
         {
           "enabled": false,
           "name": "media.gmp-provider.enabled",
-          "value": false
-        }
-      ]
-    },
-    "2021": {
-      "meta": {
-        "NOTE": "This is covered by the EME master switch (2022)",
-        "description": "",
-        "links": {},
-        "title": "disable widevine CDM (Content Decryption Module)"
-      },
-      "settings": [
-        {
-          "enabled": false,
-          "name": "media.gmp-widevinecdm.enabled",
-          "value": false
-        }
-      ]
-    },
-    "2022": {
-      "meta": {
-        "SETTING": "General>DRM Content>Play DRM-controlled content",
-        "SETUP-WEB": "e.g. Netflix, Amazon Prime, Hulu, HBO, Disney+, Showtime, Starz, DirectTV",
-        "TEST": "https://bitmovin.com/demos/drm",
-        "description": "Optionally hide the setting which also disables the DRM prompt",
-        "links": {
-          "1": "https://www.eff.org/deeplinks/2017/10/drms-dead-canary-how-we-just-lost-web-what-we-learned-it-and-what-we-need-do-next"
-        },
-        "title": "disable all DRM content (EME: Encryption Media Extension)"
-      },
-      "settings": [
-        {
-          "enabled": true,
-          "name": "media.eme.enabled",
-          "value": false
-        },
-        {
-          "enabled": false,
-          "name": "browser.eme.ui.enabled",
           "value": false
         }
       ]
@@ -1868,20 +1778,6 @@
         {
           "enabled": true,
           "name": "pdfjs.enableScripting",
-          "value": false
-        }
-      ]
-    },
-    "2621": {
-      "meta": {
-        "description": "",
-        "links": {},
-        "title": "disable links launching Windows Store on Windows 8/8.1/10 [WINDOWS]"
-      },
-      "settings": [
-        {
-          "enabled": true,
-          "name": "network.protocol-handler.external.ms-windows-store",
           "value": false
         }
       ]
@@ -2775,8 +2671,8 @@
     },
     "5016": {
       "meta": {
-        "SETTING": "To set your default \"downloads\": General>Downloads>Save files to",
-        "description": "0=desktop, 1=downloads (default), 2=last used",
+        "SETTING": "To set your custom default \"downloads\": General>Downloads>Save files to",
+        "description": "0=desktop, 1=downloads (default), 2=custom",
         "links": {},
         "title": "discourage downloading to desktop"
       },
@@ -2848,6 +2744,21 @@
         {
           "enabled": false,
           "name": "alerts.useSystemBackend.windows.notificationserver.enabled",
+          "value": false
+        }
+      ]
+    },
+    "5021": {
+      "meta": {
+        "NOTE": "This does not affect explicit user action such as using search buttons in the",
+        "description": "Don't leak URL typos to a search engine, give an error message instead\nExamples: \"secretplace,com\", \"secretplace/com\", \"secretplace com\", \"secret place.com\"\ndropdown, or using keyword search shortcuts you configure in options (e.g. \"d\" for DuckDuckGo)",
+        "links": {},
+        "title": "disable location bar using search"
+      },
+      "settings": [
+        {
+          "enabled": false,
+          "name": "keyword.enabled",
           "value": false
         }
       ]
@@ -2987,6 +2898,62 @@
           "enabled": false,
           "name": "gfx.font_rendering.opentype_svg.enabled",
           "value": false
+        }
+      ]
+    },
+    "5508": {
+      "meta": {
+        "SETTING": "General>DRM Content>Play DRM-controlled content",
+        "TEST": "https://bitmovin.com/demos/drm",
+        "description": "Optionally hide the UI setting which also disables the DRM prompt",
+        "links": {
+          "1": "https://www.eff.org/deeplinks/2017/10/drms-dead-canary-how-we-just-lost-web-what-we-learned-it-and-what-we-need-do-next"
+        },
+        "title": "disable all DRM content (EME: Encryption Media Extension)"
+      },
+      "settings": [
+        {
+          "enabled": false,
+          "name": "media.eme.enabled",
+          "value": false
+        },
+        {
+          "enabled": false,
+          "name": "browser.eme.ui.enabled",
+          "value": false
+        }
+      ]
+    },
+    "5509": {
+      "meta": {
+        "NOTE": "PHP defaults to IPv6 with \"localhost\". Use \"php -S 127.0.0.1:PORT\"",
+        "TEST": "https://ipleak.org/",
+        "description": "This is an application level fallback. Disabling IPv6 is best done at an OS/network\nlevel, and/or configured properly in system wide VPN setups.\nIf you see PR_CONNECT_RESET_ERROR, this pref *might* be the cause",
+        "links": {
+          "1": "https://www.internetsociety.org/tag/ipv6-security/ (Myths 2,4,5,6)"
+        },
+        "title": "disable IPv6 if using a VPN"
+      },
+      "settings": [
+        {
+          "enabled": false,
+          "name": "network.dns.disableIPv6",
+          "value": true
+        }
+      ]
+    },
+    "5510": {
+      "meta": {
+        "NOTE": "Will cause breakage: older modems/routers and some sites e.g banks, vimeo, icloud, instagram",
+        "description": "0=always (default), 1=only if base domains match, 2=only if hosts match",
+        "links": {},
+        "title": "control when to send a cross-origin referer"
+      },
+      "settings": [
+        {
+          "enabled": false,
+          "name": "network.http.referer.XOriginPolicy",
+          "value": 2
         }
       ]
     },
@@ -3213,6 +3180,20 @@
         }
       ]
     },
+    "6051": {
+      "meta": {
+        "description": "",
+        "links": {},
+        "title": "prefsCleaner: reset previously active items removed from arkenfox FF115+"
+      },
+      "settings": [
+        {
+          "enabled": false,
+          "name": "network.protocol-handler.external.ms-windows-store",
+          "value": ""
+        }
+      ]
+    },
     "meta": {
       "description": "",
       "links": {},
@@ -3388,7 +3369,7 @@
     },
     "7007": {
       "meta": {
-        "WHY": "Only cross-origin referers (1600s) need control",
+        "WHY": "Only cross-origin referers (1602, 5510) matter",
         "description": "",
         "links": {},
         "title": "referers"
