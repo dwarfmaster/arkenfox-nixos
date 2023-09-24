@@ -832,20 +832,55 @@
     "0710": {
       "meta": {
         "SETTING": "Privacy & Security>DNS over HTTPS",
-        "description": "0=default, 2=increased (TRR (Trusted Recursive Resolver) first), 3=max (TRR only), 5=off\nsee \"doh-rollout.home-region\": USA 2019, Canada 2021, Russia/Ukraine 2022 [3]",
+        "description": "0=default, 2=increased (TRR (Trusted Recursive Resolver) first), 3=max (TRR only), 5=off (no rollout)\nsee \"doh-rollout.home-region\": USA 2019, Canada 2021, Russia/Ukraine 2022 [3]",
         "links": {
           "1": "https://hacks.mozilla.org/2018/05/a-cartoon-intro-to-dns-over-https/",
           "2": "https://wiki.mozilla.org/Security/DOH-resolver-policy",
           "3": "https://support.mozilla.org/en-US/kb/firefox-dns-over-https",
           "4": "https://www.eff.org/deeplinks/2020/12/dns-doh-and-odoh-oh-my-year-review-2020"
         },
-        "title": "disable DNS-over-HTTPS (DoH) rollout [FF60+]"
+        "title": "enable DNS-over-HTTPS (DoH) [FF60+]"
       },
       "settings": [
         {
           "enabled": false,
           "name": "network.trr.mode",
-          "value": 5
+          "value": 3
+        }
+      ]
+    },
+    "0711": {
+      "meta": {
+        "description": "",
+        "links": {},
+        "title": "disable skipping DoH when parental controls are enabled [FF70+]"
+      },
+      "settings": [
+        {
+          "enabled": true,
+          "name": "network.dns.skipTRR-when-parental-control-enabled",
+          "value": false
+        }
+      ]
+    },
+    "0712": {
+      "meta": {
+        "NOTE": "If you USE custom then \"network.trr.uri\" should be set the same",
+        "SETTING": "Privacy & Security>DNS over HTTPS>Increased/Max>Choose provider",
+        "description": "The custom uri is the value shown when you \"Choose provider>Custom>\"",
+        "links": {},
+        "title": "set DoH provider"
+      },
+      "settings": [
+        {
+          "enabled": false,
+          "name": "network.trr.uri",
+          "value": "https://example.dns"
+        },
+        {
+          "enabled": false,
+          "name": "network.trr.custom_uri",
+          "value": "https://example.dns"
         }
       ]
     },
@@ -1256,22 +1291,6 @@
         }
       ]
     },
-    "1221": {
-      "meta": {
-        "description": "0=disable detecting Family Safety mode and importing the root\n1=only attempt to detect Family Safety mode (don't import the root)\n2=detect Family Safety mode and import the root",
-        "links": {
-          "1": "https://gitlab.torproject.org/tpo/applications/tor-browser/-/issues/21686"
-        },
-        "title": "disable Windows 8.1's Microsoft Family Safety cert [FF50+] [WINDOWS]"
-      },
-      "settings": [
-        {
-          "enabled": true,
-          "name": "security.family_safety.mode",
-          "value": 0
-        }
-      ]
-    },
     "1223": {
       "meta": {
         "SETUP-WEB": "MOZILLA_PKIX_ERROR_KEY_PINNING_FAILURE",
@@ -1422,7 +1441,7 @@
   "1400": {
     "1402": {
       "meta": {
-        "description": "Uses hardcoded lists with two parts: kBaseFonts + kLangPackFonts [1], bundled fonts are auto-allowed\nIn normal windows: uses the first applicable: RFP (4506) over TP over Standard\nIn Private Browsing windows: uses the most restrictive between normal and private\n1=only base system fonts, 2=also fonts from optional language packs, 3=also user-installed fonts",
+        "description": "Uses hardcoded lists with two parts: kBaseFonts + kLangPackFonts [1], bundled fonts are auto-allowed\nIn normal windows: uses the first applicable: RFP over TP over Standard\nIn Private Browsing windows: uses the most restrictive between normal and private\n1=only base system fonts, 2=also fonts from optional language packs, 3=also user-installed fonts",
         "links": {
           "1": "https://searchfox.org/mozilla-central/search?path=StandardFonts*.inc"
         },
@@ -2197,7 +2216,7 @@
     "4501": {
       "meta": {
         "NOTE": "pbmode applies if true and the original pref is false",
-        "SETUP-WEB": "RFP can cause some website breakage: mainly canvas, use a site exception via the urlbar",
+        "SETUP-WEB": "RFP can cause some website breakage: mainly canvas, use a canvas site exception via the urlbar",
         "description": "RFP also has a few side effects: mainly timezone is UTC0, and websites will prefer light theme",
         "links": {
           "1": "https://bugzilla.mozilla.org/418986"
@@ -2294,20 +2313,6 @@
           "enabled": false,
           "name": "privacy.resistFingerprinting.exemptedDomains",
           "value": "*.example.invalid"
-        }
-      ]
-    },
-    "4506": {
-      "meta": {
-        "description": "",
-        "links": {},
-        "title": "set RFP's font visibility level (1402) [FF94+]"
-      },
-      "settings": [
-        {
-          "enabled": false,
-          "name": "layout.css.font-visibility.resistFingerprinting",
-          "value": 1
         }
       ]
     },
@@ -2927,8 +2932,9 @@
     "5509": {
       "meta": {
         "NOTE": "PHP defaults to IPv6 with \"localhost\". Use \"php -S 127.0.0.1:PORT\"",
+        "SETUP-WEB": "PR_CONNECT_RESET_ERROR",
         "TEST": "https://ipleak.org/",
-        "description": "This is an application level fallback. Disabling IPv6 is best done at an OS/network\nlevel, and/or configured properly in system wide VPN setups.\nIf you see PR_CONNECT_RESET_ERROR, this pref *might* be the cause",
+        "description": "This is an application level fallback. Disabling IPv6 is best done at an OS/network\nlevel, and/or configured properly in system wide VPN setups.",
         "links": {
           "1": "https://www.internetsociety.org/tag/ipv6-security/ (Myths 2,4,5,6)"
         },
@@ -2956,6 +2962,14 @@
           "value": 2
         }
       ]
+    },
+    "5511": {
+      "meta": {
+        "description": "Firefox uses the system DNS to initially resolve the IP address of your DoH server.\nWhen set to a valid, working value that matches your \"network.trr.uri\" (0712) Firefox\nwon't use the system DNS. If the IP doesn't match then DoH won't work",
+        "links": {},
+        "title": "set DoH bootstrap address [FF89+]"
+      },
+      "settings": []
     },
     "meta": {
       "description": "Not recommended. Overriding these can cause breakage and performance issues,\nthey are mostly fingerprintable, and the threat model is practically nonexistent",
@@ -3587,17 +3601,12 @@
         "links": {
           "1": "https://blog.mozilla.org/en/products/firefox/block-notification-requests/"
         },
-        "title": "disable Web Notifications"
+        "title": "disable Web Notifications [FF22+]"
       },
       "settings": [
         {
           "enabled": false,
           "name": "dom.webnotifications.enabled",
-          "value": false
-        },
-        {
-          "enabled": false,
-          "name": "dom.webnotifications.serviceworker.enabled",
           "value": false
         }
       ]
