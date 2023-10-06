@@ -17,8 +17,8 @@ file after having gone through it to edit your preferences is a bit of a pain.
 In order to improve the situation, we implemented a script that parses
 Arkenfox's `user.js` and generate a home-manager module that allows setting the
 preferences using the merge algorithm of the NixOS module system. Furthermore,
-it keeps the edits outside of the generated module. Any drift between the
-settings and the `user.js` will be catched by the module type-system.
+it keeps the edits outside the generated module. Any drift between the
+settings and the `user.js` will be caught by the module type-system.
 
 ## Outputs
 
@@ -54,7 +54,7 @@ sections `enable` flags are false by default. On the other hand, the subsections
 `enable` flags are true by default.
 
 For example, if you want to enable the `TOPLEVEL`, `STARTUP` and `GEOLOCATION`
-sections, but still have firefox check if it is the default browser, and you
+sections, but still have Firefox check if it is the default browser, and you
 want to enable the search region setting that is commented in the default
 `user.js` but keep its value, you would do:
 
@@ -87,13 +87,13 @@ want to enable the search region setting that is commented in the default
 
 Finding the section and subsection numbers and the option names can be a bit
 complicated. The authoritative source of truth is of course the `user.js` file
-on Arkenfox's github, which you should read, at least the section you enable.
-For better usability, the metadata extracted is also used to generate an html
+on Arkenfox's GitHub, which you should read, at least the section you enable.
+For better usability, the metadata extracted is also used to generate a HTML
 file that may be more agreeable looking through.
 
 Targets `programs.<system>.arkenfox-v<version>-doc-static` will build this
 `html` file. An example of a rendered documentation (WARNING: often outdated)
-can be found [there](https://arkenfox.dwarfmaster.net). Each settings is
+can be found [there](https://arkenfox.dwarfmaster.net). Each setting is
 presented as a table with a checkbox indicating if it is enabled by default, its
 name, and its default value.
 
