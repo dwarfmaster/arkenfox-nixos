@@ -163,46 +163,13 @@
         }
       ]
     },
-    "0210": {
-      "meta": {
-        "SETTING": "General>Language and Appearance>Language>Choose your preferred language...",
-        "TEST": "https://addons.mozilla.org/about",
-        "description": "",
-        "links": {},
-        "title": "set preferred language for displaying pages"
-      },
-      "settings": [
-        {
-          "enabled": true,
-          "name": "intl.accept_languages",
-          "value": "en-US, en"
-        }
-      ]
-    },
-    "0211": {
-      "meta": {
-        "SETUP-WEB": "May break some input methods e.g xim/ibus for CJK languages [1]",
-        "description": "",
-        "links": {
-          "1": "https://bugzilla.mozilla.org/buglist.cgi?bug_id=867501,1629630"
-        },
-        "title": "use en-US locale regardless of the system or region locale"
-      },
-      "settings": [
-        {
-          "enabled": true,
-          "name": "javascript.use_us_english_locale",
-          "value": true
-        }
-      ]
-    },
     "meta": {
       "description": "",
       "links": {},
       "parrots": [
         "0200 syntax error: the parrot's definitely deceased!"
       ],
-      "title": "GEOLOCATION / LANGUAGE / LOCALE"
+      "title": "GEOLOCATION"
     }
   },
   "0300": {
@@ -779,7 +746,7 @@
         "SETUP-CHROME": "Can break extensions for profiles on network shares",
         "description": "",
         "links": {
-          "1": "https://gitlab.torproject.org/tpo/applications/tor-browser/-/issues/26424"
+          "1": "https://bugzilla.mozilla.org/1413868"
         },
         "title": "disable using UNC (Uniform Naming Convention) paths [FF61+]"
       },
@@ -865,20 +832,6 @@
         }
       ]
     },
-    "0711": {
-      "meta": {
-        "description": "",
-        "links": {},
-        "title": "disable skipping DoH when parental controls are enabled [FF70+]"
-      },
-      "settings": [
-        {
-          "enabled": true,
-          "name": "network.dns.skipTRR-when-parental-control-enabled",
-          "value": false
-        }
-      ]
-    },
     "0712": {
       "meta": {
         "NOTE": "If you USE custom then \"network.trr.uri\" should be set the same",
@@ -933,7 +886,7 @@
         "links": {
           "1": "https://blog.mozilla.org/data/2021/09/15/data-and-firefox-suggest/"
         },
-        "title": "disable location bar contextual suggestions [FF92+]"
+        "title": "disable location bar contextual suggestions"
       },
       "settings": [
         {
@@ -1081,6 +1034,26 @@
           "enabled": false,
           "name": "layout.css.visited_links_enabled",
           "value": false
+        }
+      ]
+    },
+    "0830": {
+      "meta": {
+        "SETTING": "Search>Default Search Engine>Choose a different default search engine for Private Windows only",
+        "description": "",
+        "links": {},
+        "title": "enable separate default search engine in Private Windows and its UI setting"
+      },
+      "settings": [
+        {
+          "enabled": true,
+          "name": "browser.search.separatePrivateDefault",
+          "value": true
+        },
+        {
+          "enabled": true,
+          "name": "browser.search.separatePrivateDefault.ui.enabled",
+          "value": true
         }
       ]
     },
@@ -1240,7 +1213,7 @@
       "meta": {
         "description": "URL shortcuts use a cached randomly named .ico file which is stored in your\nprofile/shortcutCache directory. The .ico remains after the shortcut is deleted\nIf set to false then the shortcuts use a generic Firefox icon",
         "links": {},
-        "title": "disable favicons in shortcuts"
+        "title": "disable favicons in shortcuts [WINDOWS]"
       },
       "settings": [
         {
@@ -1263,7 +1236,7 @@
     "1201": {
       "meta": {
         "SETUP-WEB": "SSL_ERROR_UNSAFE_NEGOTIATION: is it worth overriding this for that one site?",
-        "STATS": "SSL Labs (Feb 2023) reports over 99.3% of top sites have secure renegotiation [4]",
+        "STATS": "SSL Labs (Nov 2023) reports over 99.5% of top sites have secure renegotiation [4]",
         "description": "Blocks connections to servers that don't support RFC 5746 [2] as they're potentially vulnerable to a\nMiTM attack [3]. A server without RFC 5746 can be safe from the attack if it disables renegotiations\nbut the problem is that the browser can't know that. Setting this pref to true is the only way for the\nbrowser to ensure there will be no unsafe renegotiations on the channel between the browser and the server",
         "links": {
           "1": "https://wiki.mozilla.org/Security:Renegotiation",
@@ -1352,7 +1325,7 @@
     },
     "1224": {
       "meta": {
-        "description": "0 = disabled\n1 = consult CRLite but only collect telemetry\n2 = consult CRLite and enforce both \"Revoked\" and \"Not Revoked\" results\n3 = consult CRLite and enforce \"Not Revoked\" results, but defer to OCSP for \"Revoked\" (FF99+, default FF100+)",
+        "description": "0 = disabled\n1 = consult CRLite but only collect telemetry\n2 = consult CRLite and enforce both \"Revoked\" and \"Not Revoked\" results\n3 = consult CRLite and enforce \"Not Revoked\" results, but defer to OCSP for \"Revoked\" (default)",
         "links": {
           "1": "https://bugzilla.mozilla.org/buglist.cgi?bug_id=1429800,1670985,1753071",
           "2": "https://blog.mozilla.org/security/tag/crlite/"
@@ -1393,7 +1366,7 @@
         "TEST] http://httpforever.com/ | http://http.rip [no upgrade": "***/",
         "description": "When the top-level is HTTPS, insecure subresources are also upgraded (silent fail)",
         "links": {},
-        "title": "enable HTTPS-Only mode in all windows [FF76+]"
+        "title": "enable HTTPS-Only mode in all windows"
       },
       "settings": [
         {
@@ -1873,12 +1846,12 @@
     },
     "2660": {
       "meta": {
-        "SETUP-CHROME": "This will break extensions, language packs, themes and any other",
-        "description": "XPI files which are installed outside of profile and application directories",
+        "SETUP-CHROME": "Breaks usage of files which are installed outside allowed directories",
+        "description": "1=profile, 2=user, 4=application, 8=system, 16=temporary, 31=all\nThe pref value represents the sum: e.g. 5 would be profile and application directories",
         "links": {
           "1": "https://archive.is/DYjAM"
         },
-        "title": "lock down allowed extension directories"
+        "title": "limit allowed extension directories"
       },
       "settings": [
         {
@@ -1887,7 +1860,7 @@
           "value": 5
         },
         {
-          "enabled": true,
+          "enabled": false,
           "name": "extensions.autoDisableScopes",
           "value": 15
         }
@@ -2348,7 +2321,7 @@
     "meta": {
       "TEST": "https://arkenfox.github.io/TZP/tzp.html",
       "WARNING": "DO NOT USE extensions to alter RFP protected metrics",
-      "description": "RFP covers a wide range of ongoing fingerprinting solutions.\nIt is an all-or-nothing buy in: you cannot pick and choose what parts you want\n\n\n418986 - limit window.screen & CSS media queries (FF41)\n1281949 - spoof screen orientation (FF50)\n1330890 - spoof timezone as UTC0 (FF55)\n1360039 - spoof navigator.hardwareConcurrency as 2 (FF55)\nFF56\n1369303 - spoof/disable performance API\n1333651 - spoof User Agent & Navigator API\nversion: android version spoofed as ESR (FF119 or lower)\nOS: JS spoofed as Windows 10, OS 10.15, Android 10, or Linux | HTTP Headers spoofed as Windows or Android\n1369319 - disable device sensor API\n1369357 - disable site specific zoom\n1337161 - hide gamepads from content\n1372072 - spoof network information API as \"unknown\" when dom.netinfo.enabled = true\n1333641 - reduce fingerprinting in WebSpeech API\nFF57\n1369309 - spoof media statistics\n1382499 - reduce screen co-ordinate fingerprinting in Touch API\n1217290 & 1409677 - enable some fingerprinting resistance for WebGL\n1382545 - reduce fingerprinting in Animation API\n1354633 - limit MediaError.message to a whitelist\nFF58+\n1372073 - spoof/block fingerprinting in MediaDevices API (FF59)\nSpoof: enumerate devices as one \"Internal Camera\" and one \"Internal Microphone\"\nBlock: suppresses the ondevicechange event\n1039069 - warn when language prefs are not set to \"en*\" (also see 0210, 0211) (FF59)\n1222285 & 1433592 - spoof keyboard events and suppress keyboard modifier events (FF59)\nSpoofing mimics the content language of the document. Currently it only supports en-US.\nModifier events suppressed are SHIFT and both ALT keys. Chrome is not affected.\n1337157 - disable WebGL debug renderer info (FF60)\n1459089 - disable OS locale in HTTP Accept-Language headers (ANDROID) (FF62)\n1479239 - return \"no-preference\" with prefers-reduced-motion (FF63)\n1363508 - spoof/suppress Pointer Events (FF64)\n1492766 - spoof pointerEvent.pointerid (FF65)\n1485266 - disable exposure of system colors to CSS or canvas (FF67)\n1494034 - return \"light\" with prefers-color-scheme (FF67)\n1564422 - spoof audioContext outputLatency (FF70)\n1595823 - return audioContext sampleRate as 44100 (FF72)\n1607316 - spoof pointer as coarse and hover as none (ANDROID) (FF74)\n1621433 - randomize canvas (previously FF58+ returned an all-white canvas) (FF78)\n1506364 - return \"no-preference\" with prefers-contrast (FF80)\n1653987 - limit font visibility to bundled and \"Base Fonts\" (Windows, Mac, some Linux) (FF80)\n1461454 - spoof smooth=true and powerEfficient=false for supported media in MediaCapabilities (FF82)\n531915 - use fdlibm's sin, cos and tan in jsmath (FF93, ESR91.1)\n1756280 - enforce navigator.pdfViewerEnabled as true and plugins/mimeTypes as hard-coded values (FF100)\n1692609 - reduce JS timing precision to 16.67ms (previously FF55+ was 100ms) (FF102)\n1422237 - return \"srgb\" with color-gamut (FF110)\n1794628 - return \"none\" with inverted-colors (FF114)",
+      "description": "RFP covers a wide range of ongoing fingerprinting solutions.\nIt is an all-or-nothing buy in: you cannot pick and choose what parts you want\n\n\n418986 - limit window.screen & CSS media queries (FF41)\n1281949 - spoof screen orientation (FF50)\n1330890 - spoof timezone as UTC0 (FF55)\n1360039 - spoof navigator.hardwareConcurrency as 2 (FF55)\nFF56\n1333651 - spoof User Agent & Navigator API\nversion: android version spoofed as ESR (FF119 or lower)\nOS: JS spoofed as Windows 10, OS 10.15, Android 10, or Linux | HTTP Headers spoofed as Windows or Android\n1369319 - disable device sensor API\n1369357 - disable site specific zoom\n1337161 - hide gamepads from content\n1372072 - spoof network information API as \"unknown\" when dom.netinfo.enabled = true\n1333641 - reduce fingerprinting in WebSpeech API\nFF57\n1369309 - spoof media statistics\n1382499 - reduce screen co-ordinate fingerprinting in Touch API\n1217290 & 1409677 - enable some fingerprinting resistance for WebGL\n1354633 - limit MediaError.message to a whitelist\nFF58+\n1372073 - spoof/block fingerprinting in MediaDevices API (FF59)\nSpoof: enumerate devices as one \"Internal Camera\" and one \"Internal Microphone\"\nBlock: suppresses the ondevicechange event\n1039069 - warn when language prefs are not set to \"en*\" (also see 0210, 0211) (FF59)\n1222285 & 1433592 - spoof keyboard events and suppress keyboard modifier events (FF59)\nSpoofing mimics the content language of the document. Currently it only supports en-US.\nModifier events suppressed are SHIFT and both ALT keys. Chrome is not affected.\n1337157 - disable WebGL debug renderer info (FF60)\n1459089 - disable OS locale in HTTP Accept-Language headers (ANDROID) (FF62)\n1479239 - return \"no-preference\" with prefers-reduced-motion (FF63)\n1363508 - spoof/suppress Pointer Events (FF64)\n1492766 - spoof pointerEvent.pointerid (FF65)\n1485266 - disable exposure of system colors to CSS or canvas (FF67)\n1494034 - return \"light\" with prefers-color-scheme (FF67)\n1564422 - spoof audioContext outputLatency (FF70)\n1595823 - return audioContext sampleRate as 44100 (FF72)\n1607316 - spoof pointer as coarse and hover as none (ANDROID) (FF74)\n1621433 - randomize canvas (previously FF58+ returned an all-white canvas) (FF78)\n1506364 - return \"no-preference\" with prefers-contrast (FF80)\n1653987 - limit font visibility to bundled and \"Base Fonts\" (Windows, Mac, some Linux) (FF80)\n1461454 - spoof smooth=true and powerEfficient=false for supported media in MediaCapabilities (FF82)\n531915 - use fdlibm's sin, cos and tan in jsmath (FF93, ESR91.1)\n1756280 - enforce navigator.pdfViewerEnabled as true and plugins/mimeTypes as hard-coded values (FF100-115)\n1692609 - reduce JS timing precision to 16.67ms (previously FF55+ was 100ms) (FF102)\n1422237 - return \"srgb\" with color-gamut (FF110)\n1794628 - return \"none\" with inverted-colors (FF114)",
       "links": {},
       "parrots": [
         "4500 syntax error: the parrot's popped 'is clogs"
@@ -2986,11 +2959,11 @@
     },
     "6009": {
       "meta": {
-        "description": "In FF96+ these are listed in about:compat",
+        "description": "",
         "links": {
           "1": "https://blog.mozilla.org/security/2021/03/23/introducing-smartblock/"
         },
-        "title": "enforce SmartBlock shims [FF81+]"
+        "title": "enforce SmartBlock shims (about:compat) [FF81+]"
       },
       "settings": [
         {
@@ -3049,106 +3022,12 @@
       "meta": {
         "description": "",
         "links": {},
-        "title": "prefsCleaner: previously active items removed from arkenfox 102-114"
-      },
-      "settings": [
-        {
-          "enabled": false,
-          "name": "beacon.enabled",
-          "value": ""
-        },
-        {
-          "enabled": false,
-          "name": "browser.startup.blankWindow",
-          "value": ""
-        },
-        {
-          "enabled": false,
-          "name": "browser.newtab.preload",
-          "value": ""
-        },
-        {
-          "enabled": false,
-          "name": "browser.newtabpage.activity-stream.feeds.discoverystreamfeed",
-          "value": ""
-        },
-        {
-          "enabled": false,
-          "name": "browser.newtabpage.activity-stream.feeds.snippets",
-          "value": ""
-        },
-        {
-          "enabled": false,
-          "name": "browser.region.network.url",
-          "value": ""
-        },
-        {
-          "enabled": false,
-          "name": "browser.region.update.enabled",
-          "value": ""
-        },
-        {
-          "enabled": false,
-          "name": "browser.ssl_override_behavior",
-          "value": ""
-        },
-        {
-          "enabled": false,
-          "name": "devtools.chrome.enabled",
-          "value": ""
-        },
-        {
-          "enabled": false,
-          "name": "dom.disable_beforeunload",
-          "value": ""
-        },
-        {
-          "enabled": false,
-          "name": "dom.disable_open_during_load",
-          "value": ""
-        },
-        {
-          "enabled": false,
-          "name": "extensions.formautofill.available",
-          "value": ""
-        },
-        {
-          "enabled": false,
-          "name": "extensions.formautofill.addresses.supported",
-          "value": ""
-        },
-        {
-          "enabled": false,
-          "name": "extensions.formautofill.creditCards.available",
-          "value": ""
-        },
-        {
-          "enabled": false,
-          "name": "extensions.formautofill.creditCards.supported",
-          "value": ""
-        },
-        {
-          "enabled": false,
-          "name": "middlemouse.contentLoadURL",
-          "value": ""
-        }
-      ]
-    },
-    "6051": {
-      "meta": {
-        "description": "",
-        "links": {},
         "title": "prefsCleaner: previously active items removed from arkenfox 115-127"
       },
       "settings": [
         {
           "enabled": false,
           "name": "accessibility.force_disabled",
-          "value": ""
-        },
-        {
-          "enabled": false,
-          "name": "browser.fixup.alternate.enabled",
           "value": ""
         },
         {
@@ -3174,45 +3053,6 @@
         {
           "enabled": false,
           "name": "privacy.partition.serviceWorkers",
-          "value": ""
-        }
-      ]
-    },
-    "6052": {
-      "meta": {
-        "description": "",
-        "links": {},
-        "title": "prefsCleaner: deprecated ESR102 items from FF103-115"
-      },
-      "settings": [
-        {
-          "enabled": false,
-          "name": "browser.cache.offline.enable",
-          "value": ""
-        },
-        {
-          "enabled": false,
-          "name": "extensions.formautofill.heuristics.enabled",
-          "value": ""
-        },
-        {
-          "enabled": false,
-          "name": "network.cookie.lifetimePolicy",
-          "value": ""
-        },
-        {
-          "enabled": false,
-          "name": "privacy.clearsitedata.cache.enabled",
-          "value": ""
-        },
-        {
-          "enabled": false,
-          "name": "privacy.resistFingerprinting.testGranularityMask",
-          "value": ""
-        },
-        {
-          "enabled": false,
-          "name": "security.pki.sha1_enforcement_level",
           "value": ""
         }
       ]
