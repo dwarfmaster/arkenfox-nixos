@@ -6,7 +6,9 @@ versions: extracted: {
   inherit (lib) types;
 
   cfg = config.programs.firefox;
-  version = "${config.programs.firefox.package.version}";
+  version = if (config.programs.firefox.package != null)
+    then "${config.programs.firefox.package.version}"
+    else "unknown";
   ext = extracted."${cfg.arkenfox.version}";
 in {
   options.programs.firefox = {
