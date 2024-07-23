@@ -50,8 +50,10 @@ level `enable` flag is present.
 
 Since Arkenfox's settings are *very* opinionated and shouldn't be used unless
 they've been reviewed and agreed with, both the top level `enable` flag and all
-sections `enable` flags are false by default. On the other hand, the subsections
-`enable` flags are true by default.
+sections `enable` flags are false by default. On the other hand, the
+subsections `enable` flags are true by default. There is a `enableAllSections`
+top level flag that makes all sections enabled by default if this is what you
+want.
 
 For example, if you want to enable the `TOPLEVEL`, `STARTUP` and `GEOLOCATION`
 sections, but still have Firefox check if it is the default browser, and you

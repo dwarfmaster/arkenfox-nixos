@@ -79,7 +79,10 @@
     types.submodule ({config, ...}: {
       options =
         {
-          enable = lib.mkEnableOption "setting for ${name}";
+          enable = lib.mkOption {
+            description = "setting for ${name}";
+            type = types.bool;
+          };
           flatSettings = lib.mkOption {
             description = "Flat attrset of all settings in section ${name} enabled";
             type = types.attrsOf types.anything;
@@ -102,12 +105,16 @@
       type = sectionType name section;
       default = {};
     };
+  enableSection = name: _: {config, ...}: {
+    "${name}".enable = lib.mkDefault config.enableAllSections;
+  };
 
   # Top-level module
   type = types.submodule ({config, ...}: {
     options =
       {
         enable = lib.mkEnableOption "Arkenfox settings";
+        enableAllSections = lib.mkEnableOption "Enable all sections by default";
         flatSettings = lib.mkOption {
           description = "Flat attrset of all settings enabled";
           type = types.attrsOf types.anything;
@@ -123,6 +130,7 @@
           (mapAttrsToList (name: _: config."${name}".flatSettings) extracted)
         else {};
     };
+    imports = mapAttrsToList enableSection extracted;
   });
 in
   type
