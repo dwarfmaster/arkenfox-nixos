@@ -45,18 +45,16 @@
         src = ./.;
         hooks = {
           alejandra.enable = true;
+          alejandra.excludes = ["autogen"];
           deadnix.enable = true;
           statix.enable = true;
+          statix.settings.ignore = ["autogen/*"];
           perltidy = {
             enable = true;
             name = "Tidy perl code";
             types = ["perl"];
             entry = "${pkgs.perl.passthru.pkgs.PerlTidy}/bin/perltidy -b";
           };
-        };
-        settings = {
-          alejandra.exclude = ["autogen"];
-          statix.ignore = ["autogen/*"];
         };
       };
 
