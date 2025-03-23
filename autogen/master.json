@@ -26,7 +26,7 @@
   "0100": {
     "0102": {
       "meta": {
-        "NOTE": "Session Restore is cleared with history (2811), and not used in Private Browsing mode",
+        "NOTE": "Session Restore is cleared with history (2811+), and not used in Private Browsing mode",
         "SETTING": "General>Startup>Restore previous session",
         "description": "0=blank, 1=home, 2=last visited page, 3=resume previous session",
         "links": {},
@@ -179,8 +179,8 @@
     },
     "0322": {
       "meta": {
-        "NOTE": "This pref has no effect when Health Reports (0331) are disabled",
-        "SETTING": "Privacy & Security>Firefox Data Collection & Use>Allow Firefox to make personalized extension recommendations",
+        "NOTE": "This pref has no effect when Health Reports (8501) are disabled",
+        "SETTING": "Privacy & Security>Firefox Data Collection and Use>Allow personalized extension recommendations",
         "description": "",
         "links": {
           "1": "https://support.mozilla.org/kb/personalized-extension-recommendations"
@@ -211,121 +211,6 @@
         }
       ]
     },
-    "0330": {
-      "meta": {
-        "description": "If disabled, no policy is shown or upload takes place, ever",
-        "links": {
-          "1": "https://bugzilla.mozilla.org/1195552"
-        },
-        "title": "disable new data submission [FF41+]"
-      },
-      "settings": [
-        {
-          "enabled": true,
-          "name": "datareporting.policy.dataSubmissionEnabled",
-          "value": false
-        }
-      ]
-    },
-    "0331": {
-      "meta": {
-        "SETTING": "Privacy & Security>Firefox Data Collection & Use>Allow Firefox to send technical... data",
-        "description": "",
-        "links": {},
-        "title": "disable Health Reports"
-      },
-      "settings": [
-        {
-          "enabled": true,
-          "name": "datareporting.healthreport.uploadEnabled",
-          "value": false
-        }
-      ]
-    },
-    "0332": {
-      "meta": {
-        "NOTE": "\"toolkit.telemetry.enabled\" is now LOCKED to reflect prerelease (true) or release builds (false) [2]",
-        "description": "The \"unified\" pref affects the behavior of the \"enabled\" pref\n- If \"unified\" is false then \"enabled\" controls the telemetry module\n- If \"unified\" is true then \"enabled\" only controls whether to record extended data",
-        "links": {
-          "1": "https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/telemetry/internals/preferences.html",
-          "2": "https://medium.com/georg-fritzsche/data-preference-changes-in-firefox-58-2d5df9c428b5"
-        },
-        "title": "disable telemetry"
-      },
-      "settings": [
-        {
-          "enabled": true,
-          "name": "toolkit.telemetry.unified",
-          "value": false
-        },
-        {
-          "enabled": true,
-          "name": "toolkit.telemetry.enabled",
-          "value": false
-        },
-        {
-          "enabled": true,
-          "name": "toolkit.telemetry.server",
-          "value": "data:,"
-        },
-        {
-          "enabled": true,
-          "name": "toolkit.telemetry.archive.enabled",
-          "value": false
-        },
-        {
-          "enabled": true,
-          "name": "toolkit.telemetry.newProfilePing.enabled",
-          "value": false
-        },
-        {
-          "enabled": true,
-          "name": "toolkit.telemetry.shutdownPingSender.enabled",
-          "value": false
-        },
-        {
-          "enabled": true,
-          "name": "toolkit.telemetry.updatePing.enabled",
-          "value": false
-        },
-        {
-          "enabled": true,
-          "name": "toolkit.telemetry.bhrPing.enabled",
-          "value": false
-        },
-        {
-          "enabled": true,
-          "name": "toolkit.telemetry.firstShutdownPing.enabled",
-          "value": false
-        }
-      ]
-    },
-    "0333": {
-      "meta": {
-        "description": "",
-        "links": {
-          "1": "https://blog.mozilla.org/data/2018/08/20/effectively-measuring-search-in-firefox/"
-        },
-        "title": "disable Telemetry Coverage"
-      },
-      "settings": [
-        {
-          "enabled": true,
-          "name": "toolkit.telemetry.coverage.opt-out",
-          "value": true
-        },
-        {
-          "enabled": true,
-          "name": "toolkit.coverage.opt-out",
-          "value": true
-        },
-        {
-          "enabled": true,
-          "name": "toolkit.coverage.endpoint.base",
-          "value": ""
-        }
-      ]
-    },
     "0335": {
       "meta": {
         "description": "",
@@ -347,7 +232,7 @@
     },
     "0340": {
       "meta": {
-        "SETTING": "Privacy & Security>Firefox Data Collection & Use>Allow Firefox to install and run studies",
+        "SETTING": "Privacy & Security>Firefox Data Collection and Use>Install and run studies",
         "description": "",
         "links": {},
         "title": "disable Studies"
@@ -407,7 +292,7 @@
     },
     "0351": {
       "meta": {
-        "SETTING": "Privacy & Security>Firefox Data Collection & Use>Allow Firefox to send backlogged crash reports",
+        "SETTING": "Privacy & Security>Firefox Data Collection and Use>Send backlogged crash reports",
         "description": "",
         "links": {},
         "title": "enforce no submission of backlogged Crash Reports [FF58+]"
@@ -961,7 +846,7 @@
     },
     "0808": {
       "meta": {
-        "NOTE": "Recent searches are cleared with history (2811)",
+        "NOTE": "Recent searches are cleared with history (2811+)",
         "description": "",
         "links": {
           "1": "https://support.mozilla.org/kb/search-suggestions-firefox"
@@ -978,7 +863,7 @@
     },
     "0810": {
       "meta": {
-        "NOTE": "We also clear formdata on exit (2811)",
+        "NOTE": "We also clear formdata on exit (2811+)",
         "SETTING": "Privacy & Security>History>Custom Settings>Remember search and form history",
         "SETUP-WEB": "Be aware that autocomplete form data can be read by third parties [1][2]",
         "description": "",
@@ -1014,7 +899,7 @@
     "0820": {
       "meta": {
         "SETUP-HARDEN": "Bulk rapid history sniffing was mitigated in 2010 [1][2]. Slower and more expensive",
-        "description": "redraw timing attacks were largely mitigated in FF77+ [3]. Using RFP (4501) further hampers timing\nattacks. Don't forget clearing history on exit (2811). However, social engineering [2#limits][4][5]\nand advanced targeted timing attacks could still produce usable results",
+        "description": "redraw timing attacks were largely mitigated in FF77+ [3]. Using RFP (4501) further hampers timing\nattacks. Don't forget clearing history on exit (2811+). However, social engineering [2#limits][4][5]\nand advanced targeted timing attacks could still produce usable results",
         "links": {
           "1": "https://developer.mozilla.org/docs/Web/CSS/Privacy_and_the_:visited_selector",
           "2": "https://dbaron.org/mozilla/visited-privacy",
@@ -1154,7 +1039,7 @@
   "1000": {
     "1001": {
       "meta": {
-        "NOTE": "We also clear cache on exit (2811)",
+        "NOTE": "We also clear cache on exit (2811+)",
         "SETUP-CHROME": "If you think disk cache helps perf, then feel free to override this",
         "description": "",
         "links": {},
@@ -1301,11 +1186,12 @@
     },
     "1212": {
       "meta": {
-        "SETUP-WEB": "SEC_ERROR_OCSP_SERVER_ERROR",
+        "SETUP-WEB": "SEC_ERROR_OCSP_SERVER_ERROR | SEC_ERROR_OCSP_UNAUTHORIZED_REQUEST",
         "description": "When a CA cannot be reached to validate a cert, Firefox just continues the connection (=soft-fail)\nSetting this pref to true tells Firefox to instead terminate the connection (=hard-fail)\nIt is pointless to soft-fail when an OCSP fetch fails: you cannot confirm a cert is still valid (it\ncould have been revoked) and/or you could be under attack (e.g. malicious blocking of OCSP servers)",
         "links": {
           "1": "https://blog.mozilla.org/security/2013/07/29/ocsp-stapling-in-firefox/",
-          "2": "https://www.imperialviolet.org/2014/04/19/revchecking.html"
+          "2": "https://www.imperialviolet.org/2014/04/19/revchecking.html",
+          "3": "https://letsencrypt.org/2024/12/05/ending-ocsp/"
         },
         "title": "set OCSP fetch failures (non-stapled, see 1211) to hard-fail"
       },
@@ -1990,7 +1876,7 @@
   "2800": {
     "2810": {
       "meta": {
-        "NOTE": "In FF129+ clearing \"siteSettings\" on shutdown (2811), or manually via site data (2820) and",
+        "NOTE": "In FF129+ clearing \"siteSettings\" on shutdown (2811+), or manually via site data (2820+) and",
         "SETTING": "Privacy & Security>History>Custom Settings>Clear history when Firefox closes | Settings",
         "description": "via history (2830), will no longer remove sanitize on shutdown \"cookie and site data\" site exceptions (2815)",
         "links": {},
@@ -2006,35 +1892,14 @@
     },
     "2811": {
       "meta": {
-        "NOTE": "If \"history\" is true, downloads will also be cleared",
         "description": "",
         "links": {},
-        "title": "set/enforce what items to clear on shutdown (if 2810 is true) [SETUP-CHROME]"
+        "title": "set/enforce clearOnShutdown items (if 2810 is true) [SETUP-CHROME] [FF128+]"
       },
       "settings": [
         {
           "enabled": true,
-          "name": "privacy.clearOnShutdown.cache",
-          "value": true
-        },
-        {
-          "enabled": true,
           "name": "privacy.clearOnShutdown_v2.cache",
-          "value": true
-        },
-        {
-          "enabled": true,
-          "name": "privacy.clearOnShutdown.downloads",
-          "value": true
-        },
-        {
-          "enabled": true,
-          "name": "privacy.clearOnShutdown.formdata",
-          "value": true
-        },
-        {
-          "enabled": true,
-          "name": "privacy.clearOnShutdown.history",
           "value": true
         },
         {
@@ -2044,17 +1909,36 @@
         },
         {
           "enabled": false,
-          "name": "privacy.clearOnShutdown.siteSettings",
-          "value": false
-        },
-        {
-          "enabled": false,
           "name": "privacy.clearOnShutdown_v2.siteSettings",
           "value": false
         }
       ]
     },
     "2812": {
+      "meta": {
+        "description": "",
+        "links": {},
+        "title": "set/enforce clearOnShutdown items [FF136+]"
+      },
+      "settings": [
+        {
+          "enabled": true,
+          "name": "privacy.clearOnShutdown_v2.browsingHistoryAndDownloads",
+          "value": true
+        },
+        {
+          "enabled": true,
+          "name": "privacy.clearOnShutdown_v2.downloads",
+          "value": true
+        },
+        {
+          "enabled": true,
+          "name": "privacy.clearOnShutdown_v2.formdata",
+          "value": true
+        }
+      ]
+    },
+    "2813": {
       "meta": {
         "NOTE": "If true, this prevents resuming from crashes (also see 5008)",
         "description": "",
@@ -2071,31 +1955,14 @@
     },
     "2815": {
       "meta": {
-        "NOTE": "\"sessions\": Active Logins (has no site exceptions): refers to HTTP Basic Authentication [1], not logins via cookies",
+        "NOTE": "Exceptions: For cross-domain logins, add exceptions for both sites",
         "SETTING": "to manage site exceptions: Options>Privacy & Security>Permissions>Settings",
         "WARNING": "Be selective with what sites you \"Allow\", as they also disable partitioning (1767271)",
-        "description": "add exceptions for both sites e.g. https://www.youtube.com (site) + https://accounts.google.com (single sign on)",
-        "links": {
-          "1": "https://en.wikipedia.org/wiki/Basic_access_authentication"
-        },
-        "title": "set \"Cookies\" and \"Site Data\" to clear on shutdown (if 2810 is true) [SETUP-CHROME]"
+        "description": "e.g. https://www.youtube.com (site) + https://accounts.google.com (single sign on)",
+        "links": {},
+        "title": "set \"Cookies\" and \"Site Data\" to clear on shutdown (if 2810 is true) [SETUP-CHROME] [FF128+]"
       },
       "settings": [
-        {
-          "enabled": true,
-          "name": "privacy.clearOnShutdown.cookies",
-          "value": true
-        },
-        {
-          "enabled": true,
-          "name": "privacy.clearOnShutdown.offlineApps",
-          "value": true
-        },
-        {
-          "enabled": true,
-          "name": "privacy.clearOnShutdown.sessions",
-          "value": true
-        },
         {
           "enabled": true,
           "name": "privacy.clearOnShutdown_v2.cookiesAndStorage",
@@ -2133,20 +2000,33 @@
         }
       ]
     },
-    "2830": {
+    "2821": {
       "meta": {
-        "NOTE": "Regardless of what you set \"downloads\" to, as soon as the dialog",
-        "SETTING": "Privacy & Security>History>Custom Settings>Clear History",
-        "description": "Firefox remembers your last choices. This will reset them when you start Firefox\nfor \"Clear Recent History\" is opened, it is synced to the same as \"history\"",
+        "description": "",
         "links": {},
-        "title": "set manual \"Clear History\" items, also via Ctrl-Shift-Del [SETUP-CHROME]"
+        "title": "set manual \"Clear Data\" items [FF136+]"
       },
       "settings": [
         {
           "enabled": true,
-          "name": "privacy.cpd.cache",
+          "name": "privacy.clearSiteData.browsingHistoryAndDownloads",
           "value": true
         },
+        {
+          "enabled": true,
+          "name": "privacy.clearSiteData.formdata",
+          "value": true
+        }
+      ]
+    },
+    "2830": {
+      "meta": {
+        "SETTING": "Privacy & Security>History>Custom Settings>Clear History",
+        "description": "Firefox remembers your last choices. This will reset them when you start Firefox",
+        "links": {},
+        "title": "set manual \"Clear History\" items, also via Ctrl-Shift-Del [SETUP-CHROME] [FF128+]"
+      },
+      "settings": [
         {
           "enabled": true,
           "name": "privacy.clearHistory.cache",
@@ -2154,58 +2034,13 @@
         },
         {
           "enabled": true,
-          "name": "privacy.cpd.formdata",
-          "value": true
-        },
-        {
-          "enabled": true,
-          "name": "privacy.cpd.history",
-          "value": true
-        },
-        {
-          "enabled": false,
-          "name": "privacy.cpd.downloads",
-          "value": true
+          "name": "privacy.clearHistory.cookiesAndStorage",
+          "value": false
         },
         {
           "enabled": true,
           "name": "privacy.clearHistory.historyFormDataAndDownloads",
           "value": true
-        },
-        {
-          "enabled": true,
-          "name": "privacy.cpd.cookies",
-          "value": false
-        },
-        {
-          "enabled": true,
-          "name": "privacy.cpd.sessions",
-          "value": true
-        },
-        {
-          "enabled": true,
-          "name": "privacy.cpd.offlineApps",
-          "value": false
-        },
-        {
-          "enabled": true,
-          "name": "privacy.clearHistory.cookiesAndStorage",
-          "value": false
-        },
-        {
-          "enabled": false,
-          "name": "privacy.cpd.openWindows",
-          "value": false
-        },
-        {
-          "enabled": false,
-          "name": "privacy.cpd.passwords",
-          "value": false
-        },
-        {
-          "enabled": false,
-          "name": "privacy.cpd.siteSettings",
-          "value": false
         },
         {
           "enabled": false,
@@ -2214,12 +2049,31 @@
         }
       ]
     },
+    "2831": {
+      "meta": {
+        "description": "",
+        "links": {},
+        "title": "set manual \"Clear History\" items [FF136+]"
+      },
+      "settings": [
+        {
+          "enabled": true,
+          "name": "privacy.clearHistory.browsingHistoryAndDownloads",
+          "value": true
+        },
+        {
+          "enabled": true,
+          "name": "privacy.clearHistory.formdata",
+          "value": true
+        }
+      ]
+    },
     "2840": {
       "meta": {
         "NOTE": "Values 5 (last 5 minutes) and 6 (last 24 hours) are not listed in the dropdown,",
         "description": "Firefox remembers your last choice. This will reset the value when you start Firefox\n0=everything, 1=last hour, 2=last two hours, 3=last four hours, 4=today\nwhich will display a blank value, and are not guaranteed to work",
         "links": {},
-        "title": "set \"Time range to clear\" for \"Clear Data\" (2820) and \"Clear History\" (2830)"
+        "title": "set \"Time range to clear\" for \"Clear Data\" (2820+) and \"Clear History\" (2830+)"
       },
       "settings": [
         {
@@ -2459,7 +2313,6 @@
     "4512": {
       "meta": {
         "SETTING": "General>Tabs>Open links in tabs instead of new windows",
-        "TEST": "https://arkenfox.github.io/TZP/tzp.html#screen",
         "description": "1=most recent window or tab, 2=new window, 3=new tab\nStops malicious window sizes and some screen resolution leaks.\nYou can still right-click a link and open in a new window",
         "links": {
           "1": "https://gitlab.torproject.org/tpo/applications/tor-browser/-/issues/9881"
@@ -2505,9 +2358,8 @@
       ]
     },
     "meta": {
-      "TEST": "https://arkenfox.github.io/TZP/tzp.html",
       "WARNING": "DO NOT USE extensions to alter RFP protected metrics",
-      "description": "RFP overrides FPP (4000)\n\nFF128+ Arkenfox by default uses FPP (automatically enabled with ETP Strict). For most people\nthis is all you need. To use RFP instead, add RFP (4501) to your overrides, and optionally\nadd letterboxing (4504), spoof_english (4506), and webgl (4520).\n\nRFP is an all-or-nothing buy in: you cannot pick and choose what parts you want\n\n\n418986 - limit window.screen & CSS media queries (FF41)\n1360039 - spoof navigator.hardwareConcurrency as 2 (FF55)\nFF56\n1333651 - spoof User Agent & Navigator API\nversion: android version spoofed as ESR (FF119 or lower)\nOS: JS spoofed as Windows 10, OS 10.15, Android 10, or Linux | HTTP Headers spoofed as Windows or Android\n1369319 - disable device sensor API\n1369357 - disable site specific zoom\n1337161 - hide gamepads from content\n1372072 - spoof network information API as \"unknown\" when dom.netinfo.enabled = true\n1333641 - reduce fingerprinting in WebSpeech API\nFF57\n1369309 - spoof media statistics\n1382499 - reduce screen co-ordinate fingerprinting in Touch API\n1217290 & 1409677 - enable some fingerprinting resistance for WebGL\n1354633 - limit MediaError.message to a whitelist\nFF58+\n1372073 - spoof/block fingerprinting in MediaDevices API (FF59)\nSpoof: enumerate devices as one \"Internal Camera\" and one \"Internal Microphone\"\nBlock: suppresses the ondevicechange event\n1039069 - warn when language prefs are not set to \"en*\" (FF59)\n1222285 & 1433592 - spoof keyboard events and suppress keyboard modifier events (FF59)\nSpoofing mimics the content language of the document. Currently it only supports en-US.\nModifier events suppressed are SHIFT and both ALT keys. Chrome is not affected.\n1337157 - disable WebGL debug renderer info (FF60)\n1459089 - disable OS locale in HTTP Accept-Language headers (ANDROID) (FF62)\n1479239 - return \"no-preference\" with prefers-reduced-motion (FF63)\n1363508 & 1826051 - spoof/suppress Pointer Events (FF64, FF132)\n1492766 - spoof pointerEvent.pointerid (FF65)\n1485266 - disable exposure of system colors to CSS or canvas (FF67)\n1494034 - return \"light\" with prefers-color-scheme (FF67)\n1564422 - spoof audioContext outputLatency (FF70)\n1595823 - return audioContext sampleRate as 44100 (FF72)\n1607316 - spoof pointer as coarse and hover as none (ANDROID) (FF74)\n1621433 - randomize canvas (previously FF58+ returned an all-white canvas) (FF78)\n1506364 - return \"no-preference\" with prefers-contrast (FF80)\n1653987 - limit font visibility to bundled and \"Base Fonts\" (Windows, Mac, some Linux) (FF80)\n1461454 - spoof smooth=true and powerEfficient=false for supported media in MediaCapabilities (FF82)\n531915 - use fdlibm's sin, cos and tan in jsmath (FF93, ESR91.1)\n1756280 - enforce navigator.pdfViewerEnabled as true and plugins/mimeTypes as hard-coded values (FF100-115)\n1692609 - reduce JS timing precision to 16.67ms (previously FF55+ was 100ms) (FF102)\n1422237 - return \"srgb\" with color-gamut (FF110)\n1794628 - return \"none\" with inverted-colors (FF114)\n1787790 - normalize system fonts (FF128)\n1835987 - spoof timezone as Atlantic/Reykjavik (previously FF55+ was UTC) (FF128)\n1834307 - always use smooth scrolling (FF132)\n1918202 - spoof screen orientation based on spoofed screen size and platform (FF132)\npreviously it always returned landscape-primary and an angle of 0 (FF50+)\n1390465 - load all subtitles in WebVTT (Video Text Tracks) (FF133)\n1873382 - make spoofed devicePixelRatio and CSS media queries match (FF133)\npreviously FF41+ devicePixelRatio was hardcoded as 1 and FF127+ as 2\npreviously FF41+ CSS media queries were spoofed as zoom level at a devicePixelRatio of 1",
+      "description": "RFP overrides FPP (4000)\n\nFF128+ Arkenfox by default uses FPP (automatically enabled with ETP Strict). For most people\nthis is all you need. To use RFP instead, add RFP (4501) to your overrides, and optionally\nadd letterboxing (4504), spoof_english (4506), and webgl (4520).\n\nRFP is an all-or-nothing buy in: you cannot pick and choose what parts you want\n\n\n418986 - limit window.screen & CSS media queries (FF41)\n1360039 - spoof navigator.hardwareConcurrency as 2 (FF55)\nFF56\n1333651 - spoof User Agent & Navigator API\nJS: spoofed as Windows 10, OS 10.15, Android 10, or Linux\nHTTP Header: spoofed as Windows 10 or Android 10.15 until FF136 then matches JS spoof\n1369319 - disable device sensor API\n1369357 - disable site specific zoom\n1337161 - hide gamepads from content\n1372072 - spoof network information API as \"unknown\" when dom.netinfo.enabled = true\n1333641 - reduce fingerprinting in WebSpeech API\nFF57\n1369309 - spoof media statistics\n1382499 - reduce screen co-ordinate fingerprinting in Touch API\n1217290 & 1409677 - enable some fingerprinting resistance for WebGL\n1354633 - limit MediaError.message to a whitelist\nFF58+\n1372073 - spoof/block fingerprinting in MediaDevices API (FF59)\nSpoof: enumerate devices as one \"Internal Camera\" and one \"Internal Microphone\"\nBlock: suppresses the ondevicechange event\n1039069 - warn when language prefs are not set to \"en*\" (FF59)\n1222285 & 1433592 - spoof keyboard events and suppress keyboard modifier events (FF59)\nSpoofing mimics the content language of the document. Currently it only supports en-US.\nModifier events suppressed are SHIFT and both ALT keys. Chrome is not affected.\n1337157 - disable WebGL debug renderer info (FF60)\n1459089 - disable OS locale in HTTP Accept-Language headers (ANDROID) (FF62)\n1479239 - return \"no-preference\" with prefers-reduced-motion (FF63)\n1363508 & 1826051 - spoof/suppress Pointer Events (FF64, FF132)\n1492766 - spoof pointerEvent.pointerid (FF65)\n1485266 - disable exposure of system colors to CSS or canvas (FF67)\n1494034 - return \"light\" with prefers-color-scheme (FF67)\n1564422 - spoof audioContext outputLatency (FF70)\n1595823 - return audioContext sampleRate as 44100 (FF72)\n1607316 - spoof pointer as coarse and hover as none (ANDROID) (FF74)\n1621433 - randomize canvas (previously FF58+ returned an all-white canvas) (FF78)\n1506364 - return \"no-preference\" with prefers-contrast (FF80)\n1653987 - limit font visibility to bundled and \"Base Fonts\" (Windows, Mac, some Linux) (FF80)\n1461454 - spoof smooth=true and powerEfficient=false for supported media in MediaCapabilities (FF82)\n531915 - use fdlibm's sin, cos and tan in jsmath (FF93, ESR91.1)\n1756280 - enforce navigator.pdfViewerEnabled as true and plugins/mimeTypes as hard-coded values (FF100-115)\n1692609 - reduce JS timing precision to 16.67ms (previously FF55+ was 100ms) (FF102)\n1422237 - return \"srgb\" with color-gamut (FF110)\n1794628 - return \"none\" with inverted-colors (FF114)\n1787790 - normalize system fonts (FF128)\n1835987 - spoof timezone as Atlantic/Reykjavik (previously FF55+ was UTC) (FF128)\n1834307 - always use smooth scrolling (FF132)\n1918202 - spoof screen orientation based on spoofed screen size and platform (FF132)\npreviously it always returned landscape-primary and an angle of 0 (FF50+)\n1390465 - load all subtitles in WebVTT (Video Text Tracks) (FF133)\n1873382 - make spoofed devicePixelRatio and CSS media queries match (FF133)\npreviously FF41+ devicePixelRatio was hardcoded as 1 and FF127+ as 2\npreviously FF41+ CSS media queries were spoofed as zoom level at a devicePixelRatio of 1",
       "links": {},
       "parrots": [
         "4500 syntax error: the parrot's popped 'is clogs"
@@ -2724,7 +2576,7 @@
     },
     "5013": {
       "meta": {
-        "NOTE": "We also clear history and downloads on exit (2811)",
+        "NOTE": "We also clear history and downloads on exit (2811+)",
         "SETTING": "Privacy & Security>History>Custom Settings>Remember browsing and download history",
         "description": "",
         "links": {},
@@ -3208,52 +3060,72 @@
       "meta": {
         "description": "",
         "links": {},
-        "title": "prefsCleaner: previously active items removed from arkenfox 115-127"
+        "title": "prefsCleaner: reset previously active items removed from arkenfox FF128+"
       },
       "settings": [
         {
           "enabled": false,
-          "name": "accessibility.force_disabled",
+          "name": "privacy.clearOnShutdown.cache",
           "value": ""
         },
         {
           "enabled": false,
-          "name": "browser.urlbar.dnsResolveSingleWordsAfterSearch",
+          "name": "privacy.clearOnShutdown.cookies",
           "value": ""
         },
         {
           "enabled": false,
-          "name": "geo.provider.network.url",
+          "name": "privacy.clearOnShutdown.downloads",
           "value": ""
         },
         {
           "enabled": false,
-          "name": "geo.provider.network.logging.enabled",
+          "name": "privacy.clearOnShutdown.formdata",
           "value": ""
         },
         {
           "enabled": false,
-          "name": "geo.provider.use_gpsd",
+          "name": "privacy.clearOnShutdown.history",
           "value": ""
         },
         {
           "enabled": false,
-          "name": "network.protocol-handler.external.ms-windows-store",
+          "name": "privacy.clearOnShutdown.offlineApps",
           "value": ""
         },
         {
           "enabled": false,
-          "name": "privacy.partition.always_partition_third_party_non_cookie_storage",
+          "name": "privacy.clearOnShutdown.sessions",
           "value": ""
         },
         {
           "enabled": false,
-          "name": "privacy.partition.always_partition_third_party_non_cookie_storage.exempt_sessionstorage",
+          "name": "privacy.cpd.cache",
           "value": ""
         },
         {
           "enabled": false,
-          "name": "privacy.partition.serviceWorkers",
+          "name": "privacy.cpd.cookies",
+          "value": ""
+        },
+        {
+          "enabled": false,
+          "name": "privacy.cpd.formdata",
+          "value": ""
+        },
+        {
+          "enabled": false,
+          "name": "privacy.cpd.history",
+          "value": ""
+        },
+        {
+          "enabled": false,
+          "name": "privacy.cpd.offlineApps",
+          "value": ""
+        },
+        {
+          "enabled": false,
+          "name": "privacy.cpd.sessions",
           "value": ""
         }
       ]
@@ -3847,6 +3719,138 @@
         "8000 syntax error: the parrot's crossed the Jordan"
       ],
       "title": "DON'T BOTHER: FINGERPRINTING"
+    }
+  },
+  "8500": {
+    "0802-1": {
+      "meta": {
+        "NOTE": "\"toolkit.telemetry.enabled\" is now LOCKED to reflect prerelease (true) or release builds (false) [2]",
+        "description": "The \"unified\" pref affects the behavior of the \"enabled\" pref\n- If \"unified\" is false then \"enabled\" controls the telemetry module\n- If \"unified\" is true then \"enabled\" only controls whether to record extended data",
+        "links": {
+          "1": "https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/telemetry/internals/preferences.html",
+          "2": "https://medium.com/georg-fritzsche/data-preference-changes-in-firefox-58-2d5df9c428b5"
+        },
+        "title": "disable telemetry"
+      },
+      "settings": [
+        {
+          "enabled": true,
+          "name": "toolkit.telemetry.unified",
+          "value": false
+        },
+        {
+          "enabled": true,
+          "name": "toolkit.telemetry.enabled",
+          "value": false
+        },
+        {
+          "enabled": true,
+          "name": "toolkit.telemetry.server",
+          "value": "data:,"
+        },
+        {
+          "enabled": true,
+          "name": "toolkit.telemetry.archive.enabled",
+          "value": false
+        },
+        {
+          "enabled": true,
+          "name": "toolkit.telemetry.newProfilePing.enabled",
+          "value": false
+        },
+        {
+          "enabled": true,
+          "name": "toolkit.telemetry.shutdownPingSender.enabled",
+          "value": false
+        },
+        {
+          "enabled": true,
+          "name": "toolkit.telemetry.updatePing.enabled",
+          "value": false
+        },
+        {
+          "enabled": true,
+          "name": "toolkit.telemetry.bhrPing.enabled",
+          "value": false
+        },
+        {
+          "enabled": true,
+          "name": "toolkit.telemetry.firstShutdownPing.enabled",
+          "value": false
+        }
+      ]
+    },
+    "8500": {
+      "meta": {
+        "description": "If disabled, no policy is shown or upload takes place, ever",
+        "links": {
+          "1": "https://bugzilla.mozilla.org/1195552"
+        },
+        "title": "disable new data submission [FF41+]"
+      },
+      "settings": [
+        {
+          "enabled": true,
+          "name": "datareporting.policy.dataSubmissionEnabled",
+          "value": false
+        }
+      ]
+    },
+    "8501": {
+      "meta": {
+        "SETTING": "Privacy & Security>Firefox Data Collection and Use>Send technical... data",
+        "description": "",
+        "links": {},
+        "title": "disable Health Reports"
+      },
+      "settings": [
+        {
+          "enabled": true,
+          "name": "datareporting.healthreport.uploadEnabled",
+          "value": false
+        }
+      ]
+    },
+    "8503": {
+      "meta": {
+        "description": "",
+        "links": {
+          "1": "https://blog.mozilla.org/data/2018/08/20/effectively-measuring-search-in-firefox/"
+        },
+        "title": "disable Telemetry Coverage"
+      },
+      "settings": [
+        {
+          "enabled": true,
+          "name": "toolkit.telemetry.coverage.opt-out",
+          "value": true
+        },
+        {
+          "enabled": true,
+          "name": "toolkit.coverage.opt-out",
+          "value": true
+        },
+        {
+          "enabled": true,
+          "name": "toolkit.coverage.endpoint.base",
+          "value": ""
+        }
+      ]
+    },
+    "meta": {
+      "description": "Arkenfox does not consider Firefox telemetry to be a privacy or security concern - comments below.\nBut since most arkenfox users prefer it disabled, we'll do that rather than cause overrides.\n\nOpt-out\n- Telemetry is essential: a browser engine is a _very_ large complex beast costing billions to maintain\n- Opt-in telemetry _does not_ work and results in data that is unrepresentative and may be misleading\nChoice\n- Every new profile on first use provides data collection/use policy and the abillty to opt-out\n- It can be disabled at any time (Settings>Privacy & Security>Data Collection and Use) \nData\n- no PII (Personally Identifiable Information)\n- can be viewed in about:telemetry\n- uses Prio [1][2][3], Glean [4], Oblivious HTTP [5][6]",
+      "links": {
+        "1": "https://crypto.stanford.edu/prio/",
+        "2": "https://hacks.mozilla.org/2018/10/testing-privacy-preserving-telemetry-with-prio/",
+        "3": "https://blog.mozilla.org/security/2019/06/06/next-steps-in-privacy-preserving-telemetry-with-prio/",
+        "4": "https://firefox-source-docs.mozilla.org/toolkit/components/glean/index.html",
+        "5": "https://firefox-source-docs.mozilla.org/toolkit/components/glean/user/ohttp.html",
+        "6": "https://blog.mozilla.org/en/tag/oblivious-http/"
+      },
+      "parrots": [
+        "8500 syntax error: the parrot's off the twig!"
+      ],
+      "title": "TELEMETRY"
     }
   },
   "9000": {
