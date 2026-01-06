@@ -7,7 +7,13 @@
       url = "github:edolstra/flake-compat";
       flake = false;
     };
-    pre-commit.url = "github:cachix/pre-commit-hooks.nix";
+    pre-commit = {
+      url = "github:cachix/pre-commit-hooks.nix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-compat.follows = "flake-compat";
+      };
+    };
   };
 
   outputs = {
