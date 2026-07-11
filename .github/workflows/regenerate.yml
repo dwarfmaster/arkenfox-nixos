@@ -9,10 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
 
       - name: Install Nix
-        uses: cachix/install-nix-action@v22
+        uses: cachix/install-nix-action@v31
 
       - name: Setup git
         shell: bash
@@ -25,7 +25,10 @@ jobs:
         run: |
           cd autogen
           nix run ".#arkenfox-generator"
-          if [ ! -z $(git ls-files --others) ] || ! (git diff-index --quiet HEAD --); then git commit . -m "Re-extract jsons"; fi
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m "Re-extract jsons"
+          fi
 
       - name: Update flake.lock
         shell: bash
@@ -33,7 +36,7 @@ jobs:
           nix flake update --commit-lock-file --commit-lockfile-summary "Update inputs"
 
       - name: Create PR
-        uses: peter-evans/create-pull-request@v4
+        uses: peter-evans/create-pull-request@v8
         with:
           branch: update_action
           delete-branch: true
