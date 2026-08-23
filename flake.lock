@@ -16,34 +16,13 @@
         "type": "github"
       }
     },
-    "gitignore": {
-      "inputs": {
-        "nixpkgs": [
-          "pre-commit",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1709087332,
-        "narHash": "sha256-HG2cCnktfHsKV0s4XW83gU3F57gaTljL9KNSuG6bnQs=",
-        "owner": "hercules-ci",
-        "repo": "gitignore.nix",
-        "rev": "637db329424fd7e46cf4185293b9cc8c88c95394",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hercules-ci",
-        "repo": "gitignore.nix",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1778378379,
-        "narHash": "sha256-X7TcK77Lz8UY6nqiNTv+tPvAdwlUhQWw3KjsJd0SvEk=",
+        "lastModified": 1783375776,
+        "narHash": "sha256-pg6hLjDeAWaUOzh2JM2Cw0BwYpGtOyNr6A4FBwP9Ymo=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "ebd4ed760b5c24e37284e2f28c8ac20e9803a86b",
+        "rev": "cd648d6ea62bc0ffba91e61fcfe5e33c1e2004b1",
         "type": "github"
       },
       "original": {
@@ -57,17 +36,16 @@
         "flake-compat": [
           "flake-compat"
         ],
-        "gitignore": "gitignore",
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1776796298,
-        "narHash": "sha256-PcRvlWayisPSjd0UcRQbhG8Oqw78AcPE6x872cPRHN8=",
+        "lastModified": 1787424939,
+        "narHash": "sha256-O2tBn84NNuHrnqNVxx/XqsXwfYvS1YwBh+7CBnbCYsk=",
         "owner": "cachix",
         "repo": "git-hooks.nix",
-        "rev": "3cfd774b0a530725a077e17354fbdb87ea1c4aad",
+        "rev": "809414f0cdadf82cf11b06c2b29ba9b3168b3297",
         "type": "github"
       },
       "original": {
